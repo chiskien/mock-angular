@@ -7,6 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DetailComponent } from './detail/detail.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { CreateComponent } from './create/create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateComponent } from './create/create.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
