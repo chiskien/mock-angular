@@ -10,7 +10,6 @@ import {EditPageComponent} from './edit-page/edit-page.component';
 import {CreateComponent} from './create/create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HeaderComponent} from './header/header.component';
-import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import {MatTableModule} from "@angular/material/table";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
