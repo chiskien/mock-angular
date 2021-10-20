@@ -79,7 +79,7 @@
           "defaultConfiguration": "development",
           "options": {
             "browserTarget": "mock-angular:build",
-            "proxyConfig": "src/"
+            "proxyConfig": "src/proxy.conf.json"
           }
         },
         "extract-i18n": {
