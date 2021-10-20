@@ -1,11 +1,11 @@
 export interface Product {
   id: number;
   date: Date;
-  region_name: string;
+  regionName: string;
   area: string;
-  average_price: number;
+  averagePrice: number;
   index: number;
-  sale_volumn: number;
-  detached_price: number;
-  detached_index: number;
+  salesVolume: number;
+  detachedPrice: number;
+  detachedIndex: number;
 }
