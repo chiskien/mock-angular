@@ -10,6 +10,7 @@ import {EditPageComponent} from './edit-page/edit-page.component';
 import {CreateComponent} from './create/create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {PaginationComponent} from "./home-page/pagination/pagination.component";
 
 // For MDB Angular Free
 
@@ -21,6 +22,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
     EditPageComponent,
     CreateComponent,
     NotFoundComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
