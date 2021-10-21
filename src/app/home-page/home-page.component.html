@@ -16,7 +16,12 @@
   <tbody>
   <tr *ngFor="let product of product$">
     <td *ngFor="let ind of index">
-      {{product[ind]}}
+      <ng-container *ngIf="isNumber(product[ind]);else abc">
+        {{product[ind] | number}}
+      </ng-container>
+      <ng-template #abc>
+        {{product[ind]}}
+      </ng-template>
     </td>
     <td>
       <div class="action-list">

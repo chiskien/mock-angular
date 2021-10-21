@@ -25,4 +25,7 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  isNumber(value): boolean {
+    return (typeof value === "number");
+  }
 }
