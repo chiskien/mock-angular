@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
+  title: string = "Fuck the Doctor";
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
+  backTotheHomePage() {
+    this.router.navigateByUrl("/home");
+  }
 }
