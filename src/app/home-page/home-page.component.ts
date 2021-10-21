@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
@@ -15,7 +16,7 @@ export class HomePageComponent implements OnInit {
   index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,5 +28,9 @@ export class HomePageComponent implements OnInit {
 
   isNumber(value): boolean {
     return (typeof value === "number");
+  }
+
+  openCreateForm() {
+    this.router.navigateByUrl("/create");
   }
 }
