@@ -1,16 +1,26 @@
-<h1>{{title}}</h1>
-<table class="table table-striped table-hover">
+<div class="action">
+  <h1>{{title}}</h1>
+  <div class="bonjour">
+    <button class="btn btn-secondary">Create new</button>
+  </div>
+</div>
+<table class="table table-striped table-hover shadow-4">
   <thead>
-  <tr>
+  <tr class="row-header">
     <th *ngFor="let col of columns">
       {{col}}
     </th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let product of product$">
     <td *ngFor="let ind of index">
       {{product[ind]}}
+    </td>
+    <td>
+      <a routerLink="/edit" class="link"><i class="fas fa-camera"></i></a>
+      <a routerLink="/detail" class="link"> Detail</a>
     </td>
   </tr>
   </tbody>

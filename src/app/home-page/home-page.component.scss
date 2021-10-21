@@ -1,0 +1,29 @@
+$main-color: #7C4DFF;
+$secondary-color: #7E57C2;
+.table {
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: $main-color;
+}
+
+.row-header {
+  background-color: $secondary-color;
+  color: #fff
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.link {
+  font-weight: 600;
+  color: $main-color;
+}
+
+//.row-header {}

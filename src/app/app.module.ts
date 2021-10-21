@@ -9,7 +9,9 @@ import {DetailComponent} from './detail/detail.component';
 import {EditPageComponent} from './edit-page/edit-page.component';
 import {CreateComponent} from './create/create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HeaderComponent} from './header/header.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+
+// For MDB Angular Free
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import {HeaderComponent} from './header/header.component';
     DetailComponent,
     EditPageComponent,
     CreateComponent,
-    HeaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
