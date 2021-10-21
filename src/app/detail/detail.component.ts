@@ -10,17 +10,17 @@ import {Product} from "../models/product";
 })
 export class DetailComponent implements OnInit {
 
-  private _product: Product;
+  public _product: Product;
+  index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
+    "SalesVolume", "DetachedPrice", "DetachedIndex"];
 
   constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
   }
 
-  getProduct(id: number) {
-    return this.productService.getProductbyId(id).subscribe((response) => {
-      this._product = response
-    });
-  }
-
   ngOnInit(): void {
+    let id = Number.parseInt(this.activatedRoute.snapshot.params["id"]);
+    this.productService.getProductbyId(id).subscribe((response) => {
+      this._product = response;
+    })
   }
 }
