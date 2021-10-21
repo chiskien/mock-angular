@@ -4,7 +4,7 @@
     <button class="btn btn-secondary">Create new</button>
   </div>
 </div>
-<table class="table table-striped table-hover shadow-4 ">
+<table class="table datatable-striped table-hover shadow-4 ">
   <thead>
   <tr class="row-header">
     <th *ngFor="let col of columns" class="head-table">
@@ -16,10 +16,10 @@
   <tbody>
   <tr *ngFor="let product of product$">
     <td *ngFor="let ind of index">
-      <ng-container *ngIf="isNumber(product[ind]);else abc">
+      <ng-container *ngIf="isNumber(product[ind]);else displayOther">
         {{product[ind] | number}}
       </ng-container>
-      <ng-template #abc>
+      <ng-template #displayOther>
         {{product[ind]}}
       </ng-template>
     </td>
