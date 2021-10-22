@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
+import {Location} from "@angular/common";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -10,7 +11,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit, OnDestroy {
-  title: string = "Fuck the Lawer"
+  title: string = "Fuck the Lawyer"
 
   public _product: Product;
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
@@ -20,6 +21,7 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
+              private location: Location,
               private productService: ProductService) {
   }
 
@@ -51,5 +53,9 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.router.navigate(['/edit', this.id]).then(() => {
       console.log(this.id);
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
