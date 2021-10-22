@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
@@ -13,11 +13,12 @@ import {Subscription} from "rxjs";
 export class DetailComponent implements OnInit, OnDestroy {
   title: string = "Fuck the Lawyer"
 
-  public _product: Product;
+  public _product: Product | undefined;
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
-  id = Number.parseInt(this.activatedRoute.snapshot.params["id"]);
-  param: Subscription
+
+  param: Subscription = new Subscription();
+  id: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -30,14 +31,21 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   getProduct(): void {
-    this.productService.getProductbyId(this.id).subscribe((response) => {
-      this._product = response;
-    });
-    this.param = this.activatedRoute.params.subscribe((param: Params) => {
-      this.productService.getProductbyId(param["id"])
-        .subscribe((response) => {
-          this._product = response
-        })
+    this.param = this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = Number(params.get("id"));
+      this.productService.getProductbyId(this.id).subscribe((response) => {
+        this._product = {
+          id: response.id,
+          Area: response.Area,
+          AreaCode: response.AreaCode,
+          AveragePrice: response.AveragePrice,
+          Date: response.Date,
+          DetachedIndex: response.DetachedIndex,
+          DetachedPrice: response.DetachedPrice,
+          Index: response.Index,
+          RegionName: response.RegionName,
+        }
+      })
     });
   }
 

@@ -16,7 +16,7 @@
   <tbody>
   <tr *ngFor="let product of product$ ">
     <td *ngFor="let ind of index">
-      <ng-container *ngIf="isNumber(product[ind]);else displayOther">
+      <ng-container *ngIf="isNumber({value : product[ind]});else displayOther">
         {{product[ind] | number}}
       </ng-container>
       <ng-template #displayOther>

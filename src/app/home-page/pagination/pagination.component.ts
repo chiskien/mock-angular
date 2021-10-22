@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PaginationComponent implements OnInit {
   title: string = "Pagination works";
-  @Input() numberOfPages;
+  @Input() numberOfPages: number = 0;
   options: number[] = [10, 20, 50, 100];
 
   constructor() {

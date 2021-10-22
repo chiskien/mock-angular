@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
 })
 export class ProductService {
   url = "http://localhost:3000/hpiAdmins";
-  log: string;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -25,7 +24,7 @@ export class ProductService {
     });
   }
 
-  getProductbyId(id: number): Observable<Product> {
+  getProductbyId(id: number) {
     return this.http.get<Product>(this.url + `/${id}`)
   }
 

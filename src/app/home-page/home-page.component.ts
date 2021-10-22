@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Fuck the police"
-  public product$: Product[];
+  public product$: Product[] = [];
   columns: string[] = ["Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
   index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     })
   }
 
-  isNumber(value): boolean {
+  isNumber({value}: { value: any }): boolean {
     return (typeof value === "number");
   }
 

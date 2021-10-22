@@ -1,11 +1,15 @@
 <div class="action">
   <h1>{{title}}</h1>
   <div class="bonjour">
-    <button class="btn btn-secondary" (click)="editProduct()">Edit</button>
     <button class="btn btn-secondary" (click)="goBack()">Go back</button>
+    <button class="btn btn-secondary" (click)="editProduct()">Edit</button>
     <button class="btn btn-danger" (click)="deleteProduct()">Delete</button>
   </div>
 </div>
-<div *ngFor="let ind of index">
-  <p>{{_product[ind]}}</p>
+<!--<div *ngFor="let ind of index">-->
+<!--  <p>{{_product.}}</p>-->
+<!--</div>-->
+<div>
+  <p>{{_product.id}}</p>
+  <p>{{_product.Area}}</p>
 </div>

@@ -13,20 +13,20 @@ export class EditPageComponent implements OnInit {
   index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
   public _product: Product;
-  id = Number.parseInt(this.route.snapshot.params["id"]);
+  id: number;
 
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private location: Location) {
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((param) => {
+      this.id = Number(param.get("id"));
+    })
     this.getProduct();
   }
 
   getProduct() {
-    this.productService.getProductbyId(this.id).subscribe((response) => {
-      this._product = response;
-    })
   }
 
   save(): void {
