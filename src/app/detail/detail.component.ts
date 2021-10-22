@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
 
@@ -9,18 +9,38 @@ import {Product} from "../models/product";
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit {
+  title: string = "Fuck the Lawer"
 
   public _product: Product;
-  index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
+  index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
+  id = Number.parseInt(this.activatedRoute.snapshot.params["id"]);
 
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    let id = Number.parseInt(this.activatedRoute.snapshot.params["id"]);
-    this.productService.getProductbyId(id).subscribe((response) => {
+    this.getProduct();
+  }
+
+  getProduct(): void {
+    this.productService.getProductbyId(this.id).subscribe((response) => {
       this._product = response;
-    })
+    });
+    this.activatedRoute.params.subscribe((param: Params) => {
+      this.productService.getProductbyId(param["id"])
+        .subscribe((response) => {
+          this._product = response
+        })
+    });
+  }
+
+  deleteProduct() {
+
+  }
+
+  editProduct() {
   }
 }

@@ -1,4 +1,13 @@
-<p>detail works!</p>
-<ng-container *ngFor="let ind of index">
+<div class="action">
+  <h1>{{title}}</h1>
+  <div class="bonjour">
+    <button class="btn btn-secondary" (click)="editProduct()">Edit</button>
+    <button class="btn btn-secondary" (click)="deleteProduct()">Delete</button>
+  </div>
+</div>
+
+
+<div *ngFor="let ind of index">
   <p>{{_product[ind]}}</p>
-</ng-container>
+</div>
+<a [routerLink]="['/detail', 80]" class="text text-secondary">New Product</a>
