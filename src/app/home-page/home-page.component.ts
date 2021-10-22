@@ -34,7 +34,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   openCreateForm() {
-    this.router.navigateByUrl("/create");
+    this.router.navigateByUrl("/create").then(() => console.log("Hello World"));
   }
 
   ngOnDestroy() {

@@ -1,1 +1,10 @@
-<p>edit-page works!</p>
+<div class="action">
+  <h2>{{title}}</h2>
+  <div class="bonjour">
+    <button class="button btn-secondary btn" (click)="goBack()">Go back</button>
+  </div>
+</div>
+<div *ngFor="let ind of index">
+  <p>{{ind}}: {{_product[ind]}}</p>
+</div>
+

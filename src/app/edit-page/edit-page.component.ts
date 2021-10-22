@@ -16,13 +16,13 @@ export class EditPageComponent implements OnInit {
   public _product: Product;
   id: number = 0;
   param: Subscription = new Subscription();
+  title: string = "Fuck the Universe";
 
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private location: Location) {
   }
 
   ngOnInit(): void {
-
     this.getProduct();
   }
 
@@ -30,17 +30,17 @@ export class EditPageComponent implements OnInit {
     this.param = this.route.paramMap.subscribe((params) => {
       this.id = Number(params.get("id"));
       this.productService.getProductbyId(this.id).subscribe((response) => {
-        // this._product = {
-        //   id: response.id,
-        //   Area: response.Area,
-        //   AreaCode: response.AreaCode,
-        //   AveragePrice: response.AveragePrice,
-        //   Date: response.Date,
-        //   DetachedIndex: response.DetachedIndex,
-        //   DetachedPrice: response.DetachedPrice,
-        //   Index: response.Index,
-        //   RegionName: response.RegionName,
-        // };
+        this._product = {
+          id: response.id,
+          Area: response.Area,
+          AreaCode: response.AreaCode,
+          AveragePrice: response.AveragePrice,
+          Date: response.Date,
+          DetachedIndex: response.DetachedIndex,
+          DetachedPrice: response.DetachedPrice,
+          Index: response.Index,
+          RegionName: response.RegionName,
+        };
         console.log(this._product);
       })
     });
