@@ -11,6 +11,7 @@ import {CreateComponent} from './create/create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {PaginationComponent} from "./home-page/pagination/pagination.component";
+import {FormsModule} from "@angular/forms";
 
 // For MDB Angular Free
 
@@ -29,6 +30,7 @@ import {PaginationComponent} from "./home-page/pagination/pagination.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,4 @@
-$main-color: #7C4DFF;
-$secondary-color: #7E57C2;
+@import "../../assets/scss/free/variables";
 
 @mixin action-header {
   display: flex;
@@ -8,12 +7,7 @@ $secondary-color: #7E57C2;
   margin-bottom: 15px;
 }
 
-.btn {
-  background-color: $main-color;
-}
-
 .row-header {
-  background-color: $secondary-color;
   color: #fff;
   font-size: 1.1em;
 }
@@ -24,7 +18,7 @@ $secondary-color: #7E57C2;
 
 .link {
   font-weight: 600;
-  color: $main-color;
+  color: $deep-purple-accent-200;
   margin: 5px;
   font-size: 1.1em;
 }
