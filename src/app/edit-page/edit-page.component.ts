@@ -3,6 +3,7 @@ import {ProductService} from "../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-edit-page',
@@ -13,20 +14,36 @@ export class EditPageComponent implements OnInit {
   index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
   public _product: Product;
-  id: number;
+  id: number = 0;
+  param: Subscription = new Subscription();
 
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private location: Location) {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param) => {
-      this.id = Number(param.get("id"));
-    })
+
     this.getProduct();
   }
 
-  getProduct() {
+  getProduct(): void {
+    this.param = this.route.paramMap.subscribe((params) => {
+      this.id = Number(params.get("id"));
+      this.productService.getProductbyId(this.id).subscribe((response) => {
+        // this._product = {
+        //   id: response.id,
+        //   Area: response.Area,
+        //   AreaCode: response.AreaCode,
+        //   AveragePrice: response.AveragePrice,
+        //   Date: response.Date,
+        //   DetachedIndex: response.DetachedIndex,
+        //   DetachedPrice: response.DetachedPrice,
+        //   Index: response.Index,
+        //   RegionName: response.RegionName,
+        // };
+        console.log(this._product);
+      })
+    });
   }
 
   save(): void {

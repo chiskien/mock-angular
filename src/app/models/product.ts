@@ -1,4 +1,4 @@
-export interface Product {
+export class Product {
   id: number;
   Date: string;
   RegionName: string;
@@ -11,8 +11,8 @@ export interface Product {
   // "12m%Change": string,
   // "AveragePriceSA": "",
   // SalesVolume: number,
-  DetachedPrice: number,
-  DetachedIndex: number,
+  DetachedPrice: number;
+  DetachedIndex: number;
   // "Detached1m%Change": "",
   // "Detached12m%Change": "",
   // "SemiDetachedPrice": number,

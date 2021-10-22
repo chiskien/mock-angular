@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     })
   }
 
-  isNumber({value}: { value: any }): boolean {
+  isNumber(value): boolean {
     return (typeof value === "number");
   }
 

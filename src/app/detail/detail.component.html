@@ -6,10 +6,7 @@
     <button class="btn btn-danger" (click)="deleteProduct()">Delete</button>
   </div>
 </div>
-<!--<div *ngFor="let ind of index">-->
-<!--  <p>{{_product.}}</p>-->
-<!--</div>-->
-<div>
-  <p>{{_product.id}}</p>
-  <p>{{_product.Area}}</p>
+<div *ngFor="let ind of index">
+  <p>{{_product[ind]}}</p>
 </div>
+

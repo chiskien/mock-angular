@@ -13,7 +13,7 @@ import {Subscription} from "rxjs";
 export class DetailComponent implements OnInit, OnDestroy {
   title: string = "Fuck the Lawyer"
 
-  public _product: Product | undefined;
+  public _product: Product;
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
 
@@ -33,7 +33,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   getProduct(): void {
     this.param = this.activatedRoute.paramMap.subscribe((params) => {
       this.id = Number(params.get("id"));
-      this.productService.getProductbyId(this.id).subscribe((response) => {
+      this.productService.getProductbyId(this.id).subscribe((response: Product) => {
         this._product = {
           id: response.id,
           Area: response.Area,
@@ -44,7 +44,8 @@ export class DetailComponent implements OnInit, OnDestroy {
           DetachedPrice: response.DetachedPrice,
           Index: response.Index,
           RegionName: response.RegionName,
-        }
+        };
+        console.log(this._product);
       })
     });
   }
