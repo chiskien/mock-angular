@@ -1,11 +1,30 @@
 export interface Product {
-  id: number;
-  date: Date;
+  id: 1;
+  date: string;
   regionName: string;
   area: string;
+  areaCode: string;
   averagePrice: number;
   index: number;
-  salesVolume: number;
-  detachedPrice: number;
-  detachedIndex: number;
+  indexSA: string,
+  "1m%Change": string,
+  "12m%Change": string,
+  "AveragePriceSA": "",
+  salesVolume: number,
+  detachedPrice: number,
+  detachedIndex: number,
+  "Detached1m%Change": "",
+  "Detached12m%Change": "",
+  "SemiDetachedPrice": number,
+  "SemiDetachedIndex": number,
+  "SemiDetached1m%Change": "",
+  "SemiDetached12m%Change": "",
+  "TerracedPrice": number,
+  "TerracedIndex": number,
+  "Terraced1m%Change": "",
+  "Terraced12m%Change": "",
+  "FlatPrice": number,
+  "FlatIndex": number,
+  "Flat1m%Change": "",
+  "Flat12m%Change": ""
 }

@@ -8,18 +8,14 @@ $secondary-color: #7E57C2;
   margin-bottom: 15px;
 }
 
-.table {
-  font-size: 0.9em;
-  font-weight: 600;
-}
-
 .btn {
   background-color: $main-color;
 }
 
 .row-header {
   background-color: $secondary-color;
-  color: #fff
+  color: #fff;
+  font-size: 1.1em;
 }
 
 .action {
