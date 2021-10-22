@@ -48,5 +48,8 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   editProduct() {
+    this.router.navigate(['/edit', this.id]).then(() => {
+      console.log(this.id);
+    });
   }
 }

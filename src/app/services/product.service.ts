@@ -12,11 +12,11 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProduct(): Observable<Product[]> {
+  getProduct(_page: number = 1, _limit: number = 10): Observable<Product[]> {
     return this.http.get<Product[]>(this.url, {
       params: {
-        _page: 1,
-        _limit: 20
+        _page: _page,
+        _limit: _limit
       }
     });
   }
