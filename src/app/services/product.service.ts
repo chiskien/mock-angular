@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {Observable} from "rxjs";
@@ -8,6 +8,10 @@ import {Observable} from "rxjs";
 })
 export class ProductService {
   url = "http://localhost:3000/hpiAdmins";
+  log: string;
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   constructor(private http: HttpClient) {
   }
@@ -24,4 +28,10 @@ export class ProductService {
   getProductbyId(id: number): Observable<Product> {
     return this.http.get<Product>(this.url + `/${id}`)
   }
+
+  updateProduct(product: Product) {
+    return this.http.put(this.url, product, this.httpOptions)
+  }
+
+
 }
