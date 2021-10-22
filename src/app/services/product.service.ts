@@ -13,7 +13,12 @@ export class ProductService {
   }
 
   getProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+    return this.http.get<Product[]>(this.url, {
+      params: {
+        _page: 1,
+        _limit: 20
+      }
+    });
   }
 
   getProductbyId(id: number) {

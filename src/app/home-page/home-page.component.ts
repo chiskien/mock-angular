@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProduct().subscribe((response) => {
-        this.product$ = response.slice(0, 12);
+        this.product$ = response;
       }
     );
   }
