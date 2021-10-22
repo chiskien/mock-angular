@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Fuck the police"
   public product$: Product[];
   columns: string[] = ["Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
@@ -20,10 +20,13 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProduct().subscribe((response) => {
-        this.product$ = response;
-      }
-    );
+    this.getProducts();
+  }
+
+  getProducts() {
+    return this.productService.getProduct().subscribe((response) => {
+      this.product$ = response
+    })
   }
 
   isNumber(value): boolean {
@@ -32,5 +35,9 @@ export class HomePageComponent implements OnInit {
 
   openCreateForm() {
     this.router.navigateByUrl("/create");
+  }
+
+  ngOnDestroy() {
+    this.getProducts().unsubscribe();
   }
 }
