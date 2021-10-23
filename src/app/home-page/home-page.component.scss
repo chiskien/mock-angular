@@ -9,7 +9,8 @@
 
 .row-header {
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1em;
+  text-align: center;
 }
 
 .action {
@@ -19,8 +20,13 @@
 .link {
   font-weight: 600;
   color: $deep-purple-accent-200;
-  margin: 5px;
   font-size: 1.1em;
+  margin-right: 20px;
+}
+
+.btn-ck {
+  padding: 0.625rem 0.8rem 0.5rem 0.8rem;
+  margin-left: 5px;
 }
 
 //.row-header {}

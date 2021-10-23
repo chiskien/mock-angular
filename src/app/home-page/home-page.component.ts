@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Fuck the police"
-  public product$: Product[] = [];
+  public products$: Product[] = [];
   columns: string[] = ["Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
   index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   getProducts() {
     return this.productService.getProduct().subscribe((response) => {
-      this.product$ = response
+      this.products$ = response
     })
   }
 
@@ -39,5 +39,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.getProducts().unsubscribe();
+  }
+
+  deleteProduct(product: Product) {
+    this.products$ = this.products$.filter(p => p !== product);
+    this.productService.deleteProduct(product.id).subscribe();
   }
 }

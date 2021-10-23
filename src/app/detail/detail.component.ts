@@ -54,8 +54,11 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.param.unsubscribe();
   }
 
-  deleteProduct() {
-
+  deleteProduct(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(() => {
+        this.goBack();
+      }
+    )
   }
 
   editProduct() {
