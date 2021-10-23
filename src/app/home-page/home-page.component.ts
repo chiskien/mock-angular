@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit, OnDestroy {
-  title: string = "Fuck the police"
+  title: string = "Product Table"
   public products$: Product[] = [];
   columns: string[] = ["Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
