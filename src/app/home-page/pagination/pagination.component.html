@@ -1,10 +1,23 @@
 <div class="datatable-pagination">
   <div class="datatable-select-wrapper">
-    <p class="datatable-select-text">{{numberOfPages}}</p>
-    <select name="entries" id="">
-      <option *ngFor="let entries of options" value="entries">
-        {{entries}}
-      </option>
-    </select>
+    <p class="datatable-select-text">Rows per page: </p>
+    <form>
+      <select name="entries">
+        <option *ngFor="let entries of options" [ngValue]="entries">
+          {{entries}}
+        </option>
+      </select>
+    </form>
+    <div class="datatable-pagination-nav">
+      showing 1-10 of {{numberOfPages}}
+    </div>
+    <div class="datatable-pagination-buttons">
+      <button class="btn btn-link datatable-pagination-button datatable-pagination-left">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="btn btn-link datatable-pagination-button datatable-pagination-right">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
   </div>
 </div>

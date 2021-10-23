@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./detail.component.scss'],
 })
 export class DetailComponent implements OnInit, OnDestroy {
-  title: string = "Fuck the Lawyer"
+  title: string = "Product detail"
 
   public _product: Product;
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",

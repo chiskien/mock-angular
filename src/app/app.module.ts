@@ -13,7 +13,6 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {PaginationComponent} from "./home-page/pagination/pagination.component";
 import {FormsModule} from "@angular/forms";
 import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
 
 // For MDB Angular Free
 
@@ -27,7 +26,6 @@ import {FooterComponent} from './footer/footer.component';
     NotFoundComponent,
     PaginationComponent,
     HeaderComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
