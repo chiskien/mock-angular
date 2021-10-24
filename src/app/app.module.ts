@@ -35,6 +35,7 @@ import {PopUpConfirmationComponent} from "./pop-up-confirmation/pop-up-confirmat
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

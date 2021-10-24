@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Popconfirm} from "../../assets/js/pro/popconfirm";
 
 @Component({
   selector: 'app-pop-up-confirmation',
@@ -7,6 +6,8 @@ import {Popconfirm} from "../../assets/js/pro/popconfirm";
   styleUrls: ['./pop-up-confirmation.component.scss']
 })
 export class PopUpConfirmationComponent implements OnInit {
+  title: string = "Are you sure about that?";
+  
 
   constructor() {
   }
@@ -16,4 +17,3 @@ export class PopUpConfirmationComponent implements OnInit {
   }
 }
 
-export default Popconfirm;

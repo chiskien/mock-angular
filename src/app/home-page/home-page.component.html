@@ -27,9 +27,9 @@
       <div class="action-list">
         <a [routerLink]="['/edit', product.id]" class="link"><i class="fas fa-edit"></i></a>
         <a [routerLink]="['/detail', product.id]" class="link"> <i class="fas fa-eye"></i></a>
-        <button (click)="openPopUp()"
-                class="btn btn-ck btn-secondary popconfirm-popover">
-          <i class="fas fa-trash-alt"></i></button>
+        <button type="button" class="btn btn-ck btn-secondary popconfirm-toggle">
+          <i class="fas fa-trash-alt"></i>
+        </button>
       </div>
     </td>
   </tr>
