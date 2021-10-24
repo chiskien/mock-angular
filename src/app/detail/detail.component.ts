@@ -28,11 +28,11 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   getProduct(): void {
-    this.activatedRoute.paramMap.pipe(
+    this.param = this.activatedRoute.paramMap.pipe(
       switchMap((param: ParamMap) => {
         this.id = +param.get("id");
         return this.productService.getProductbyId(this.id);
-      }), map(product => this._product = product)
+      }), map((product) => this._product = product)
     ).subscribe();
   }
 

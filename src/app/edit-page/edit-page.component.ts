@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../services/product.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
 import {Subscription} from "rxjs";
+import {map, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-edit-page',
@@ -11,12 +12,10 @@ import {Subscription} from "rxjs";
   styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
-  index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
-    "SalesVolume", "DetachedPrice", "DetachedIndex"];
   public _product: Product;
   id: number = 0;
   param: Subscription = new Subscription();
-  title: string = "Fuck the Universe";
+  title: string = "Edit Product";
 
   constructor(private productService: ProductService, private route: ActivatedRoute,
               private location: Location) {
@@ -27,23 +26,12 @@ export class EditPageComponent implements OnInit {
   }
 
   getProduct(): void {
-    this.param = this.route.paramMap.subscribe((params) => {
-      this.id = Number(params.get("id"));
-      this.productService.getProductbyId(this.id).subscribe((response) => {
-        this._product = {
-          id: response.id,
-          Area: response.Area,
-          AreaCode: response.AreaCode,
-          AveragePrice: response.AveragePrice,
-          Date: response.Date,
-          DetachedIndex: response.DetachedIndex,
-          DetachedPrice: response.DetachedPrice,
-          Index: response.Index,
-          RegionName: response.RegionName,
-        };
-        console.log(this._product);
-      })
-    });
+    this.route.paramMap.pipe(
+      switchMap((param: ParamMap) => {
+        this.id = +param.get("id");
+        return this.productService.getProductbyId(this.id);
+      }), map((product) => this._product = product)
+    ).subscribe();
   }
 
   save(): void {
