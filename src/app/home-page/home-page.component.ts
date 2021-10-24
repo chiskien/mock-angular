@@ -45,4 +45,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.products$ = this.products$.filter(p => p !== product);
     this.productService.deleteProduct(product.id).subscribe();
   }
+
+  openPopUp() {
+    
+  }
 }

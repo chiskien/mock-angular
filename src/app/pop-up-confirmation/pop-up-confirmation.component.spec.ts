@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopupConfirmComponent } from './popup-confirm.component';
+import { PopUpConfirmationComponent } from './pop-up-confirmation.component';
 
-describe('PopupConfirmComponent', () => {
-  let component: PopupConfirmComponent;
-  let fixture: ComponentFixture<PopupConfirmComponent>;
+describe('PopUpConfirmationComponent', () => {
+  let component: PopUpConfirmationComponent;
+  let fixture: ComponentFixture<PopUpConfirmationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupConfirmComponent ]
+      declarations: [ PopUpConfirmationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupConfirmComponent);
+    fixture = TestBed.createComponent(PopUpConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

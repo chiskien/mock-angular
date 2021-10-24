@@ -32,10 +32,10 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   getProduct(): void {
     this.param = this.activatedRoute.paramMap.subscribe((params) => {
-      this.id = Number(params.get("id"));
+      this.id = +params.get("id");
       this.productService.getProductbyId(this.id).subscribe((response: Product) => {
         this._product = {
-          id: response.id,
+          id: +response.id,
           Area: response.Area,
           AreaCode: response.AreaCode,
           AveragePrice: response.AveragePrice,

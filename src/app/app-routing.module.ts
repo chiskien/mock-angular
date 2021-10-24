@@ -5,6 +5,7 @@ import {DetailComponent} from './detail/detail.component';
 import {EditPageComponent} from './edit-page/edit-page.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {NotFoundComponent} from "./not-found/not-found.component";
+import {PopUpConfirmationComponent} from "./pop-up-confirmation/pop-up-confirmation.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'edit/:id', component: EditPageComponent},
   {path: 'create', component: CreateComponent},
   {path: 'detail/:id', component: DetailComponent},
+  {path: 'pop', component: PopUpConfirmationComponent},
   {path: "**", component: NotFoundComponent}
 ];
 
