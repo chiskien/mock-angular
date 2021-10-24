@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
+import {ModalComponent} from "../modal/modal.component";
 
 @Component({
   selector: 'app-home-page',
@@ -11,12 +13,14 @@ import {Router} from "@angular/router";
 export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Product Table"
   public products$: Product[] = [];
-  columns: string[] = ["Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
+  columns: string[] = ["id", "Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
-  index: string[] = ["Date", "RegionName", "Area", "AveragePrice", "Index",
+  index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
+  modalRef: MdbModalRef<ModalComponent>;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router,
+              private modalService: MdbModalService) {
   }
 
   ngOnInit(): void {
@@ -37,17 +41,21 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl("/create").then(() => console.log("Hello World"));
   }
 
-  ngOnDestroy() {
-    this.getProducts().unsubscribe();
-  }
-
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.id).subscribe(() => {
       this.products$ = this.products$.filter(p => p !== product);
     });
   }
 
-  openPopUp() {
+  openPopUp(id: number) {
+    this.modalRef = this.modalService.open(ModalComponent, {
+      data: {
+        id: id
+      },
+    });
+  }
 
+  ngOnDestroy() {
+    this.getProducts().unsubscribe();
   }
 }

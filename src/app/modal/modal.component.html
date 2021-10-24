@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+  <button
+    (click)="modalRef.close()"
+    aria-label="Close"
+    class="btn-close"
+    type="button"
+  ></button>
+</div>
+<div class="modal-body">Delete Product with id: {{id}} ?</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="modalRef.close()">
+    Close
+  </button>
+  <button type="button" class="btn btn-secondary" (click)="deleteProduct()">Delete</button>
+</div>
