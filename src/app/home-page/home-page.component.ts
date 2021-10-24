@@ -42,11 +42,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   deleteProduct(product: Product) {
-    this.products$ = this.products$.filter(p => p !== product);
-    this.productService.deleteProduct(product.id).subscribe();
+    this.productService.deleteProduct(product.id).subscribe(() => {
+      this.products$ = this.products$.filter(p => p !== product);
+    });
   }
 
   openPopUp() {
-    
+
   }
 }
