@@ -4,7 +4,7 @@ import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
 import {Subscription} from "rxjs";
-import {switchMap} from "rxjs/operators";
+import {map, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-detail',
@@ -32,8 +32,8 @@ export class DetailComponent implements OnInit, OnDestroy {
       switchMap((param: ParamMap) => {
         this.id = +param.get("id");
         return this.productService.getProductbyId(this.id);
-      })
-    )
+      }), map(product => this._product = product)
+    ).subscribe();
   }
 
   ngOnDestroy() {
