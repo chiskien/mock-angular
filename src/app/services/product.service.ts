@@ -1,7 +1,8 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,10 @@ export class ProductService {
 
   getProductbyId(id: number): Observable<Product> {
     return this.http.get<Product>(this.url + id, {})
-      .pipe();
+      .pipe(catchError((err: HttpErrorResponse) => {
+        console.error(err);
+        return throwError(err);
+      }));
   }
 
   httpOptions = {
