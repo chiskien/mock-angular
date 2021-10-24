@@ -36,7 +36,7 @@ export class EditPageComponent implements OnInit {
 
   save(product: Product): void {
     if (this._product) {
-      this.productService.updateProduct(this._product)
+      this.productService.updateProduct(product)
         .subscribe(() => this.goBack())
     }
   }
