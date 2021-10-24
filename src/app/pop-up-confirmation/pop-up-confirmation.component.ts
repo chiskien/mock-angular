@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Popconfirm} from "../../assets/js/pro/popconfirm";
 
 @Component({
   selector: 'app-pop-up-confirmation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopUpConfirmationComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
+  ngOnInit(): void {
+
+  }
 }
+
+export default Popconfirm;

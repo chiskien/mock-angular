@@ -8,7 +8,7 @@ import {Location} from "@angular/common";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  title: string = "Fuck the Doctor";
+  title: string = "Create a Product";
 
   constructor(private router: Router, private location: Location) {
   }
