@@ -13,7 +13,6 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {PaginationComponent} from "./home-page/pagination/pagination.component";
 import {FormsModule} from "@angular/forms";
 import {HeaderComponent} from './header/header.component';
-import {PopUpConfirmationComponent} from "./pop-up-confirmation/pop-up-confirmation.component";
 
 // For MDB Angular Free
 
@@ -27,7 +26,6 @@ import {PopUpConfirmationComponent} from "./pop-up-confirmation/pop-up-confirmat
     NotFoundComponent,
     PaginationComponent,
     HeaderComponent,
-    PopUpConfirmationComponent
   ],
   imports: [
     BrowserModule,
