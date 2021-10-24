@@ -6,9 +6,7 @@
   </div>
 </div>
 <div>
-  <ng-container *ngFor="let ind of index">
-    <p>{{ind}}: {{_product[ind]}}</p>
-  </ng-container>
+
   <button class="btn btn-info" (click)="editProduct()">Edit</button>
   <button class="btn btn-danger" (click)="deleteProduct(_product)">Delete</button>
 </div>

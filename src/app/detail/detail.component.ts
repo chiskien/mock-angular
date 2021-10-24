@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
 import {Subscription} from "rxjs";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-detail',
@@ -12,11 +13,7 @@ import {Subscription} from "rxjs";
 })
 export class DetailComponent implements OnInit, OnDestroy {
   title: string = "Product detail"
-
   public _product: Product;
-  index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
-    "SalesVolume", "DetachedPrice", "DetachedIndex"];
-
   param: Subscription = new Subscription();
   id: number = 0;
 
@@ -31,23 +28,12 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   getProduct(): void {
-    this.param = this.activatedRoute.paramMap.subscribe((params) => {
-      this.id = +params.get("id");
-      this.productService.getProductbyId(this.id).subscribe((response: Product) => {
-        this._product = {
-          id: +response.id,
-          Area: response.Area,
-          AreaCode: response.AreaCode,
-          AveragePrice: response.AveragePrice,
-          Date: response.Date,
-          DetachedIndex: response.DetachedIndex,
-          DetachedPrice: response.DetachedPrice,
-          Index: response.Index,
-          RegionName: response.RegionName,
-        };
-        console.log(this._product);
+    this.activatedRoute.paramMap.pipe(
+      switchMap((param: ParamMap) => {
+        this.id = +param.get("id");
+        return this.productService.getProductbyId(this.id);
       })
-    });
+    )
   }
 
   ngOnDestroy() {
