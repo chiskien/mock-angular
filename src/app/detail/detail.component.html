@@ -23,8 +23,8 @@
   <p>Terraced Price: {{_product?.TerracedPrice| number}}</p>
   <p>Terraced Index: {{_product?.TerracedIndex| number}}</p>
   <button class="btn btn-info" (click)="editProduct()">Edit</button>
-  <button class="btn btn-danger"
-
-          (click)="deleteProduct(_product)">Delete
+  <button type="button" class="btn btn-ck btn-secondary"
+          (click)="openPopUp(_product.id)">
+    <i class="fas fa-trash-alt"></i>
   </button>
 </div>

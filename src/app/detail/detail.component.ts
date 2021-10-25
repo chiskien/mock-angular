@@ -5,6 +5,8 @@ import {Product} from "../models/product";
 import {Location} from "@angular/common";
 import {Subscription} from "rxjs";
 import {map, switchMap} from "rxjs/operators";
+import {ModalComponent} from "../modal/modal.component";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 
 @Component({
   selector: 'app-detail',
@@ -16,11 +18,13 @@ export class DetailComponent implements OnInit, OnDestroy {
   public _product: Product;
   param: Subscription = new Subscription();
   id: number = 0;
+  modalRef: MdbModalRef<ModalComponent>;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private location: Location,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private modalService: MdbModalService) {
   }
 
   ngOnInit(): void {
@@ -50,6 +54,14 @@ export class DetailComponent implements OnInit, OnDestroy {
   editProduct() {
     this.router.navigate(['/edit', this.id]).then(() => {
       console.log(this.id);
+    });
+  }
+
+  openPopUp(id: number) {
+    this.modalRef = this.modalService.open(ModalComponent, {
+      data: {
+        id: id
+      },
     });
   }
 
