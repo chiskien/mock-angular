@@ -53,7 +53,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
         id: id
       },
     });
-    
+
   }
 
   ngOnDestroy() {

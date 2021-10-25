@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {MdbModalRef} from "mdb-angular-ui-kit/modal";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
 
@@ -13,23 +13,24 @@ export class ModalComponent implements OnInit {
   @Output() rickRoll = new EventEmitter();
 
   constructor(public modalRef: MdbModalRef<ModalComponent>,
+              private modalService: MdbModalService,
               private productService: ProductService,
-              private route: Router
+              private route: Router,
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  onClick() {
-    this.productService.deleteProduct(this.id).subscribe(() => {
-      this.close(), () => {
-        console.log(this.id)
-      }
-    })
-  }
-
   close() {
     this.modalRef.close();
+  }
+
+  onClick() {
+    this.productService.deleteProduct(this.id).subscribe(() => {
+      this.route.navigate(['/home']).then(() => {
+        window.location.reload();
+      })
+    })
   }
 }
