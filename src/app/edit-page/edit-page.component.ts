@@ -60,26 +60,32 @@ export class EditPageComponent implements OnInit {
   onChange(regionName: string) {
     switch (regionName) {
       case "Greater Manchester":
+        this._product.RegionName = regionName;
         this._product.Area = "Northwest";
         this._product.AreaCode = "E11000001";
         break;
       case "Merseyside":
+        this._product.RegionName = regionName;
         this._product.Area = "Northwest";
         this._product.AreaCode = "E11000002";
         break;
       case "South Yorkshire":
+        this._product.RegionName = regionName;
         this._product.Area = "North";
         this._product.AreaCode = "E11000003";
         break;
       case "Tyne and Wear":
+        this._product.RegionName = regionName;
         this._product.Area = "North";
         this._product.AreaCode = "E11000007";
         break;
       case "West Midlands":
+        this._product.RegionName = regionName;
         this._product.Area = "Midlands";
         this._product.AreaCode = "E11000005";
         break;
       case "West Yorkshire":
+        this._product.RegionName = regionName;
         this._product.Area = "North";
         this._product.AreaCode = "E11000006";
         break;
