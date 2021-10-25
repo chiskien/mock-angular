@@ -53,6 +53,10 @@ export class EditPageComponent implements OnInit {
     }
   }
 
+  reset() {
+    this.formGroup.reset();
+  }
+
   goBack(): void {
     this.location.back();
   }

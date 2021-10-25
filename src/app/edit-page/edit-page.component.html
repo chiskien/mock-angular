@@ -30,48 +30,50 @@
   </div>
   <div>
     <label for="averagePrice">Average Price: </label>
-    <input type="text" id="averagePrice" [value]="_product.AveragePrice">
+    <input type="text" id="averagePrice" [value]="_product?.AveragePrice | number">
   </div>
   <div>
     <label for="index">Index: </label>
-    <input type="text" id="index" [value]="_product.Index">
+    <input type="text" id="index" [value]="_product?.Index | number">
   </div>
   <div>
     <label for="indexSA">IndexSA</label>
-    <input type="text" id="indexSA" [value]="_product.IndexSA">
+    <input type="text" id="indexSA" [value]="_product?.IndexSA | number">
   </div>
   <div>
     <label for="detachedPrice">Detached Price: </label>
-    <input type="text" id="detachedPrice" [value]="_product.DetachedPrice">
+    <input type="text" id="detachedPrice" [value]="_product?.DetachedPrice| number">
   </div>
   <div>
     <label for="detachedIndex">Detached Index: </label>
-    <input type="text" id="detachedIndex" [value]="_product.DetachedIndex">
+    <input type="text" id="detachedIndex" [value]="_product?.DetachedIndex| number">
   </div>
   <div>
     <label for="semiDetachedPrice">SemiDetached Price: </label>
-    <input type="text" id="semiDetachedPrice" [value]="_product.SemiDetachedPrice">
+    <input type="text" id="semiDetachedPrice" [value]="_product?.SemiDetachedPrice| number">
   </div>
   <div>
     <label for="semiDetachedIndex">SemiDetached Index: </label>
-    <input type="text" id="semiDetachedIndex" [value]="_product.SemiDetachedIndex">
+    <input type="text" id="semiDetachedIndex" [value]="_product?.SemiDetachedIndex| number">
   </div>
   <div>
     <label for="flatPrice">Flat Price: </label>
-    <input type="text" id="flatPrice" [value]="_product.FlatPrice">
+    <input type="text" id="flatPrice" [value]="_product?.FlatPrice| number">
   </div>
   <div>
     <label for="flatIndex">Flat Index: </label>
-    <input type="text" id="flatIndex" [value]="_product.FlatIndex">
+    <input type="text" id="flatIndex" [value]="_product?.FlatIndex| number">
   </div>
   <label for="terracedPrice">Terraced Price </label>
-  <input type="text" id="terracedPrice" [value]="_product.TerracedPrice">
+  <input type="text" id="terracedPrice" [value]="_product?.TerracedPrice| number">
   <div>
     <label for="terracedIndex">Terraced Index </label>
-    <input type="text" id="terracedIndex" [value]="_product.TerracedIndex">
+    <input type="text" id="terracedIndex" [value]="_product?.TerracedIndex| number">
   </div>
-  <button class="btn btn-secondary">Save</button>
-  <button class="btn btn-secondary">Reset</button>
+  <button class="btn btn-secondary" type="submit"
+          (click)="save(_product)">Save
+  </button>
+  <button class="btn btn-secondary" (click)="reset()">Reset</button>
   <button class="btn-secondary btn" (click)="goBack()">Cancel</button>
 </form>
 
