@@ -15,5 +15,10 @@
   <p>Detached Price: {{_product?.DetachedPrice |number}}</p>
   <p>Detached Index: {{_product?.DetachedIndex|number}}</p>
   <button class="btn btn-secondary" (click)="save(_product)">Edit</button>
+  <select name="RegionName" id="RegionName" (change)="onChange($event.target['value'])">
+    <option *ngFor="let option of regionNameOptions" [ngValue]="option">
+      {{option}}
+    </option>
+  </select>
 </div>
 
