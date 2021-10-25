@@ -9,8 +9,10 @@
 </div>
 <div class="modal-body">Delete Product with id: {{id}} ?</div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-danger" (click)="modalRef.close()">
+  <button type="button" class="btn btn-danger" (click)="close()">
     Close
   </button>
-  <button type="button" class="btn btn-secondary" (click)="deleteProduct()">Delete</button>
+  <button type="button" class="btn btn-secondary" (click)="onClick()">
+    Delete
+  </button>
 </div>

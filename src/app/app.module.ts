@@ -11,10 +11,11 @@ import {CreateComponent} from './create/create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {PaginationComponent} from "./home-page/pagination/pagination.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HeaderComponent} from './header/header.component';
 import {MdbModalModule} from "mdb-angular-ui-kit/modal";
-import { ModalComponent } from './modal/modal.component';
+import {ModalComponent} from './modal/modal.component';
+import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
 
 // For MDB Angular Free
 
@@ -36,7 +37,9 @@ import { ModalComponent } from './modal/modal.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MdbModalModule
+    MdbModalModule,
+    MdbFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

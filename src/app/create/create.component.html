@@ -1,6 +1,11 @@
-<div class="action">
-  <h1>{{title}}</h1>
-  <div class="bonjour">
-    <button class="btn btn-secondary" (click)="backTotheHomePage()">Back to home</button>
+<div class="container">
+  <div class="action justify-content-evenly">
+    <h2>{{title}}</h2>
+    <button class="btn btn-secondary" (click)="backTotheHomePage()">
+      Go back
+    </button>
   </div>
+  <form [formGroup]="productForm">
+
+  </form>
 </div>
