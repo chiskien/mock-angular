@@ -3,43 +3,73 @@
   <div class="bonjour">
   </div>
 </div>
-<form style="text-align: start" class="form-group">
-  <label for="productId">Product id</label>
-  <input [value]="_product?.id" readonly id="productId">
-  <p>Date: {{_product?.Date}}</p>
-  <label for="RegionName">Region Name: </label>
-  <select name="RegionName" [value]="_product?.RegionName"
-          id="RegionName" (change)="onChange($event.target['value'])">
-    <option *ngFor="let option of regionNameOptions" [ngValue]="option">
-      {{option}}
-    </option>
-  </select>
-  <label for="area">Area: </label>
-  <input type="text" id="area" readonly [value]="_product?.Area">
-  <label for="areaCode">AreaCode: </label>
-  <input type="text" id="areaCode" readonly [value]="_product?.AreaCode">
-  <label for="averagePrice">Average Price: </label>
-  <input type="text" id="averagePrice" [value]="_product.AveragePrice">
-  <label for="index">Index: </label>
-  <input type="text" id="index" [value]="_product.Index">
-  <label for="indexSA">IndexSA</label>
-  <input type="text" id="indexSA" [value]="_product.IndexSA">
-  <label for="detachedPrice">Detached Price: </label>
-  <input type="text" id="detachedPrice" [value]="_product.DetachedPrice">
-  <label for="detachedIndex">Detached Index: </label>
-  <input type="text" id="detachedIndex" [value]="_product.DetachedIndex">
-  <label for="semiDetachedPrice">SemiDetached Price: </label>
-  <input type="text" id="semiDetachedPrice" [value]="_product.SemiDetachedPrice">
-  <label for="semiDetachedIndex">SemiDetached Index: </label>
-  <input type="text" id="semiDetachedIndex" [value]="_product.SemiDetachedIndex">
-  <label for="flatPrice">Flat Price: </label>
-  <input type="text" id="flatPrice" [value]="_product.FlatPrice">
-  <label for="flatIndex">Flat Index: </label>
-  <input type="text" id="flatIndex" [value]="_product.FlatIndex">
+<form class="form-group" [formGroup]="formGroup">
+  <div>
+    <label for="productId">Product id</label>
+    <input [value]="_product?.id" readonly id="productId">
+  </div>
+  <div>
+    <p>Date: {{_product?.Date}}</p>
+  </div>
+  <div>
+    <label for="RegionName">Region Name: </label>
+    <select name="RegionName" [value]="_product?.RegionName"
+            id="RegionName" (change)="onChange($event.target['value'])">
+      <option *ngFor="let option of regionNameOptions" [ngValue]="option">
+        {{option}}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="area">Area: </label>
+    <input type="text" id="area" readonly [value]="_product?.Area">
+  </div>
+  <div>
+    <label for="areaCode">AreaCode: </label>
+    <input type="text" id="areaCode" readonly [value]="_product?.AreaCode">
+  </div>
+  <div>
+    <label for="averagePrice">Average Price: </label>
+    <input type="text" id="averagePrice" [value]="_product.AveragePrice">
+  </div>
+  <div>
+    <label for="index">Index: </label>
+    <input type="text" id="index" [value]="_product.Index">
+  </div>
+  <div>
+    <label for="indexSA">IndexSA</label>
+    <input type="text" id="indexSA" [value]="_product.IndexSA">
+  </div>
+  <div>
+    <label for="detachedPrice">Detached Price: </label>
+    <input type="text" id="detachedPrice" [value]="_product.DetachedPrice">
+  </div>
+  <div>
+    <label for="detachedIndex">Detached Index: </label>
+    <input type="text" id="detachedIndex" [value]="_product.DetachedIndex">
+  </div>
+  <div>
+    <label for="semiDetachedPrice">SemiDetached Price: </label>
+    <input type="text" id="semiDetachedPrice" [value]="_product.SemiDetachedPrice">
+  </div>
+  <div>
+    <label for="semiDetachedIndex">SemiDetached Index: </label>
+    <input type="text" id="semiDetachedIndex" [value]="_product.SemiDetachedIndex">
+  </div>
+  <div>
+    <label for="flatPrice">Flat Price: </label>
+    <input type="text" id="flatPrice" [value]="_product.FlatPrice">
+  </div>
+  <div>
+    <label for="flatIndex">Flat Index: </label>
+    <input type="text" id="flatIndex" [value]="_product.FlatIndex">
+  </div>
   <label for="terracedPrice">Terraced Price </label>
   <input type="text" id="terracedPrice" [value]="_product.TerracedPrice">
-  <label for="terracedIndex">Terraced Index </label>
-  <input type="text" id="terracedIndex" [value]="_product.TerracedIndex">
+  <div>
+    <label for="terracedIndex">Terraced Index </label>
+    <input type="text" id="terracedIndex" [value]="_product.TerracedIndex">
+  </div>
   <button class="btn btn-secondary">Save</button>
   <button class="btn btn-secondary">Reset</button>
   <button class="btn-secondary btn" (click)="goBack()">Cancel</button>
