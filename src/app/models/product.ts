@@ -26,5 +26,5 @@ export interface Product {
   "FlatPrice": number,
   "FlatIndex": number,
   "Flat1m%Change": "",
-  "Flat12m%Change": ""
+  "Flat12m%Change": "",
 }

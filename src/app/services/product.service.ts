@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
 import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProduct(_page: number = 10, _limit: number = 10): Observable<Product[]> {
+  getProduct(_page: number = 1, _limit: number = 10): Observable<Product[]> {
     return this.http.get<Product[]>(this.url, {
       params: {
         _page: _page,
@@ -30,8 +31,10 @@ export class ProductService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  updateProduct(product: Product) {
-    return this.http.put(this.url + product.id, product, this.httpOptions)
+  updateProduct(product: Product): Observable<any> {
+
+    return this.http.put(this.url + `${product.id}`, product, this.httpOptions)
+      .pipe(tap(_ => console.log(`Update Product with ${product.id} successfully`)));
   }
 
   deleteProduct(id: number): Observable<Product> {

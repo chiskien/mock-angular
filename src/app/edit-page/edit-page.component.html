@@ -12,12 +12,12 @@
   <div>
     <label for="date">Date: </label>
     <input type="date" id="date"
-           formControlName="date"
-           [value]="date.value | date:'shortDate'">
+           formControlName="Date"
+           [value]="Date.value | date:'yyyy/dd/MM'">
   </div>
   <div>
     <label for="RegionName">Region Name: </label>
-    <select name="RegionName" formControlName="regionName"
+    <select name="RegionName" formControlName="RegionName"
             id="RegionName" (change)="onChange($event.target['value'])">
       <option *ngFor="let option of regionNameOptions" [ngValue]="option">
         {{option}}
@@ -26,75 +26,86 @@
   </div>
   <div>
     <label for="area">Area: </label>
-    <input type="text" id="area" readonly>
+    <input type="text" id="area"
+           formControlName="Area">
   </div>
   <div>
     <label for="areaCode">AreaCode: </label>
-    <input type="text" id="areaCode" readonly>
+    <input type="text" id="areaCode"
+           formControlName="AreaCode"
+    >
   </div>
   <div>
     <label for="averagePrice">Average Price: </label>
     <input type="text" id="averagePrice"
-           formControlName="averagePrice"
-           [value]="averagePrice.value | number">
+           formControlName="AveragePrice"
+           [value]="AveragePrice.value | number">
+
+  </div>
+  <div>
+    <label for="salesVolume">Sale Volume</label>
+    <input type="text" id="salesVolume"
+           formControlName="SalesVolume"
+           [value]="SalesVolume.value | number">
 
   </div>
   <div>
     <label for="index">Index: </label>
     <input type="text" id="index"
-           formControlName="index"
-           [value]="index.value | number">
+           formControlName="Index"
+           [value]="Index.value | number">
   </div>
   <div>
     <label for="detachedPrice">Detached Price: </label>
     <input type="text" id="detachedPrice"
-           formControlName="detachedPrice"
-           [value]="detachedPrice.value | number">
+           formControlName="DetachedPrice"
+           [value]="DetachedPrice.value | number">
   </div>
   <div>
     <label for="detachedIndex">Detached Index: </label>
     <input type="text" id="detachedIndex"
-           formControlName="detachedIndex"
-           [value]="detachedIndex.value | number">
+           formControlName="DetachedIndex"
+           [value]="DetachedIndex.value | number">
   </div>
   <div>
     <label for="semiDetachedPrice">SemiDetached Price: </label>
     <input type="text" id="semiDetachedPrice"
-           formControlName="semiDetachedPrice"
-           [value]="semiDetachedPrice.value | number">
+           formControlName="SemiDetachedPrice"
+           [value]="SemiDetachedPrice.value | number">
   </div>
   <div>
     <label for="semiDetachedIndex">SemiDetached Index: </label>
     <input type="text" id="semiDetachedIndex"
-           formControlName="semiDetachedIndex"
-           [value]="semiDetachedIndex.value | number">
+           formControlName="SemiDetachedIndex"
+           [value]="SemiDetachedIndex.value | number">
   </div>
   <div>
     <label for="flatPrice">Flat Price: </label>
     <input type="text" id="flatPrice"
-           formControlName="flatPrice"
-           [value]="flatPrice.value | number">
+           formControlName="FlatPrice"
+           [value]="FlatPrice.value | number">
   </div>
   <div>
     <label for="flatIndex">Flat Index: </label>
     <input type="text" id="flatIndex"
-           formControlName="flatIndex"
-           [value]="flatIndex.value | number">
+           formControlName="FlatIndex"
+           [value]="FlatIndex.value | number">
   </div>
   <label for="terracedPrice">Terraced Price </label>
   <input type="text" id="terracedPrice"
-         formControlName="terracedPrice"
-         [value]="terracedPrice.value | number">
+         formControlName="TerracedPrice"
+         [value]="TerracedPrice.value | number">
   <div>
     <label for="terracedIndex">Terraced Index </label>
     <input type="text" id="terracedIndex"
-           formControlName="terracedIndex"
-           [value]="terracedIndex.value | number">
+           formControlName="TerracedIndex"
+           [value]="TerracedIndex.value | number">
   </div>
   <button class="btn btn-secondary" type="submit"
-          (click)="save(_product)">Save
+          (click)="save(formGroup.value)">Save
   </button>
-  <button class="btn btn-secondary" (click)="reset()">Reset</button>
-  <button class="btn-secondary btn" (click)="goBack()">Cancel</button>
+  <button type="reset" class="btn btn-secondary" (click)="reset()">Reset</button>
+  <button type="button" class="btn-secondary btn" (click)="goBack()">Cancel</button>
   <p>{{formGroup.value | json}}</p>
+  <p>{{_product|json}}</p>
 </form>

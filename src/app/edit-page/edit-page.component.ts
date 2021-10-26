@@ -31,31 +31,30 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getProduct();
-    console.table(this.formGroup);
   }
 
   createForm(_product: Product): void {
     this.formGroup = this.formBuilder.group({
       id: [_product?.id, Validators.required],
-      date: [_product?.Date],
-      regionName: [_product?.RegionName, Validators.required],
-      area: [_product?.Area, Validators.required],
-      areaCode: [_product?.AreaCode, Validators.required],
-      averagePrice: [_product?.AveragePrice, [Validators.required]],
-      index: [_product?.Index, [Validators.required]],
-      indexSA: [_product?.IndexSA],
-      averagePriceSA: [_product?.AveragePriceSA],
-      salesVolume: [_product?.SalesVolume],
-      detachedPrice: [_product?.DetachedPrice, [Validators.required]],
-      detachedIndex: [_product?.DetachedIndex, [Validators.required]],
-      semiDetachedIndex: [_product?.SemiDetachedIndex, [Validators.required]],
-      semiDetachedPrice: [_product?.SemiDetachedPrice, [Validators.required]],
-      terracedPrice: [_product?.TerracedPrice, [Validators.required]],
-      terracedIndex: [_product?.TerracedIndex, [Validators.required]],
-      flatIndex: [_product?.FlatIndex, [Validators.required]],
-      flatPrice: [_product?.FlatPrice, [Validators.required]],
+      Date: [_product?.Date],
+      RegionName: [_product?.RegionName, Validators.required],
+      Area: [_product?.Area, Validators.required],
+      AreaCode: [_product?.AreaCode, Validators.required],
+      AveragePrice: [_product?.AveragePrice, [Validators.required]],
+      Index: [_product?.Index, [Validators.required]],
+      IndexSA: [_product?.IndexSA],
       "1m%Change": [_product?.["1m%Change"]],
       "12m%Change": [_product?.["12m%Change"]],
+      AveragePriceSA: [_product?.AveragePriceSA],
+      SalesVolume: [_product?.SalesVolume],
+      DetachedPrice: [_product?.DetachedPrice, [Validators.required]],
+      DetachedIndex: [_product?.DetachedIndex, [Validators.required]],
+      SemiDetachedIndex: [_product?.SemiDetachedIndex, [Validators.required]],
+      SemiDetachedPrice: [_product?.SemiDetachedPrice, [Validators.required]],
+      TerracedPrice: [_product?.TerracedPrice, [Validators.required]],
+      TerracedIndex: [_product?.TerracedIndex, [Validators.required]],
+      FlatIndex: [_product?.FlatIndex, [Validators.required]],
+      FlatPrice: [_product?.FlatPrice, [Validators.required]],
       "Detached1m%Change": [_product?.["Detached1m%Change"]],
       "Detached12m%Change": [_product?.["Detached12m%Change"]],
       "SemiDetached12m%Change": [_product?.["SemiDetached12m%Change"]],
@@ -75,6 +74,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       }), map((product: Product) => this._product = product)
     ).subscribe((product: Product) => {
       this.createForm(product);
+      this.onChange(product?.RegionName);
     });
   }
 
@@ -126,15 +126,12 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   }
 
-  save(): void {
-    this._product = Object.assign(this._product, this.formGroup.value);
-    console.table(this.formGroup.value);
-    // if (this._product) {
-    //   this.productService.updateProduct(this.formGroup.value)
-    //     .subscribe(() => console.log(`Product with id: ${this.formGroup.value.id}
-    //     updated successfully`)
-    //     );
-    // }
+  save(product: Product): void {
+    this._product = product;
+    this.productService.updateProduct(product).subscribe(
+      () => this.location.back(),
+      () => console.error("Update fail")
+    )
   }
 
   reset() {
@@ -147,69 +144,74 @@ export class EditPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.param.unsubscribe();
   }
 
   get id() {
     return this.formGroup.get("id");
   }
 
-  get regionName() {
-    return this.formGroup.get("regionName");
+  get RegionName() {
+    return this.formGroup.get("RegionName");
   }
 
-  get area() {
-    return this.formGroup.get("area");
+  get Area() {
+    return this.formGroup.get("Area");
   }
 
-  get areaCode() {
-    return this.formGroup.get("areaCode");
+  get AreaCode() {
+    return this.formGroup.get("AreaCode");
   }
 
-  get date() {
-    return this.formGroup.get("date");
+  get Date() {
+    return this.formGroup.get("Date");
   }
 
-  get averagePrice() {
-    return this.formGroup.get("averagePrice");
+  get AveragePrice() {
+    return this.formGroup.get("AveragePrice");
   }
 
-  get index() {
-    return this.formGroup.get("index");
+  get Index() {
+    return this.formGroup.get("Index");
   }
 
-  get detachedPrice() {
-    return this.formGroup.get("detachedPrice");
+  get IndexSA() {
+    return this.formGroup.get("IndexSA");
   }
 
-  get detachedIndex() {
-    return this.formGroup.get("detachedIndex");
+  get DetachedPrice() {
+    return this.formGroup.get("DetachedPrice");
   }
 
-  get semiDetachedPrice() {
-    return this.formGroup.get("semiDetachedPrice");
+  get DetachedIndex() {
+    return this.formGroup.get("DetachedIndex");
   }
 
-  get semiDetachedIndex() {
-    return this.formGroup.get("semiDetachedIndex");
+  get SemiDetachedPrice() {
+    return this.formGroup.get("SemiDetachedPrice");
   }
 
-  get flatPrice() {
-    return this.formGroup.get("semiDetachedIndex");
+  get SemiDetachedIndex() {
+    return this.formGroup.get("SemiDetachedIndex");
   }
 
-  get flatIndex() {
-    return this.formGroup.get("semiDetachedIndex");
+  get FlatPrice() {
+    return this.formGroup.get("FlatPrice");
   }
 
-  get terracedPrice() {
-    return this.formGroup.get("semiDetachedIndex");
+  get FlatIndex() {
+    return this.formGroup.get("FlatIndex");
   }
 
-  get terracedIndex() {
-    return this.formGroup.get("semiDetachedIndex");
+  get TerracedPrice() {
+    return this.formGroup.get("TerracedPrice");
   }
 
-  get salesVolume() {
-    return this.formGroup.get("salesVolume");
+  get TerracedIndex() {
+    return this.formGroup.get("TerracedIndex");
+  }
+
+  get SalesVolume() {
+    return this.formGroup.get("SalesVolume");
   }
 }
