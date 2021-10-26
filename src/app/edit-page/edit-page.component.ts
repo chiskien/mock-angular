@@ -4,7 +4,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
 import {map, switchMap} from "rxjs/operators";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-page',
@@ -25,6 +25,7 @@ export class EditPageComponent implements OnInit {
               private location: Location,
               private formBuilder: FormBuilder) {
     this.createForm();
+    console.table(this.formGroup);
   }
 
   ngOnInit(): void {
@@ -33,7 +34,21 @@ export class EditPageComponent implements OnInit {
 
   createForm(): void {
     this.formGroup = this.formBuilder.group({
-      id: [this.id,]
+      id: [this.id, Validators.required],
+      date: [this._product?.Date, [Validators.required]],
+      regionName: [this._product?.RegionName, Validators.required],
+      area: [this._product?.Area, Validators.required],
+      areaCode: [this._product?.AreaCode, Validators.required],
+      averagePrice: [this._product?.AveragePrice, [Validators.required]],
+      index: [this._product?.Index, [Validators.required]],
+      detachedPrice: [this._product?.DetachedPrice, [Validators.required]],
+      detachedIndex: [this._product?.DetachedIndex, [Validators.required]],
+      semiDetachedIndex: [this._product?.SemiDetachedIndex, [Validators.required]],
+      semiDetachedPrice: [this._product?.SemiDetachedPrice, [Validators.required]],
+      terracedPrice: [this._product?.TerracedPrice, [Validators.required]],
+      terracedIndex: [this._product?.TerracedIndex, [Validators.required]],
+      flatIndex: [this._product?.FlatIndex, [Validators.required]],
+      flatPrice: [this._product?.FlatPrice, [Validators.required]],
     })
   }
 
@@ -54,6 +69,7 @@ export class EditPageComponent implements OnInit {
   }
 
   reset() {
+    console.log("reset this madafaka");
     this.formGroup.reset();
   }
 

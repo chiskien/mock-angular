@@ -6,10 +6,11 @@
 <form class="form-group" [formGroup]="formGroup">
   <div>
     <label for="productId">Product id</label>
-    <input [value]="_product?.id" readonly id="productId">
+    <input formControlName="id" readonly id="productId">
   </div>
   <div>
-    <p>Date: {{_product?.Date}}</p>
+    <label for="date">Date: </label>
+    <input type="date" id="date" formControlName="date">
   </div>
   <div>
     <label for="RegionName">Region Name: </label>
