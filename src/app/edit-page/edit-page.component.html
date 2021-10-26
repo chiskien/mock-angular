@@ -6,15 +6,17 @@
 <form class="form-group" [formGroup]="formGroup">
   <div>
     <label for="productId">Product id</label>
-    <input formControlName="id" readonly id="productId">
+    <input readonly id="productId" [value]="_product?.id" formControlName="id">
   </div>
   <div>
     <label for="date">Date: </label>
-    <input type="date" id="date" formControlName="date">
+    <input type="date" id="date" [value]="_product?.Date | date:'YYYY-MM-dd' "
+           formControlName="date">
   </div>
   <div>
     <label for="RegionName">Region Name: </label>
-    <select name="RegionName" [value]="_product?.RegionName"
+    <select name="RegionName" formControlName="regionName"
+            [value]="_product?.RegionName"
             id="RegionName" (change)="onChange($event.target['value'])">
       <option *ngFor="let option of regionNameOptions" [ngValue]="option">
         {{option}}
@@ -31,45 +33,61 @@
   </div>
   <div>
     <label for="averagePrice">Average Price: </label>
-    <input type="text" id="averagePrice" [value]="_product?.AveragePrice | number">
+    <input type="text" id="averagePrice"
+           formControlName="averagePrice"
+           [value]="_product?.AveragePrice | number">
   </div>
   <div>
     <label for="index">Index: </label>
-    <input type="text" id="index" [value]="_product?.Index | number">
-  </div>
-  <div>
-    <label for="indexSA">IndexSA</label>
-    <input type="text" id="indexSA" [value]="_product?.IndexSA | number">
+    <input type="text" id="index"
+           formControlName="index"
+           [value]="_product?.Index | number">
   </div>
   <div>
     <label for="detachedPrice">Detached Price: </label>
-    <input type="text" id="detachedPrice" [value]="_product?.DetachedPrice| number">
+    <input type="text" id="detachedPrice"
+           formControlName="detachedPrice"
+           [value]="_product?.DetachedPrice| number">
   </div>
   <div>
     <label for="detachedIndex">Detached Index: </label>
-    <input type="text" id="detachedIndex" [value]="_product?.DetachedIndex| number">
+    <input type="text" id="detachedIndex"
+           formControlName="detachedIndex"
+           [value]="_product?.DetachedIndex| number">
   </div>
   <div>
     <label for="semiDetachedPrice">SemiDetached Price: </label>
-    <input type="text" id="semiDetachedPrice" [value]="_product?.SemiDetachedPrice| number">
+    <input type="text" id="semiDetachedPrice"
+           formControlName="semiDetachedPrice"
+           [value]="_product?.SemiDetachedPrice| number">
   </div>
   <div>
     <label for="semiDetachedIndex">SemiDetached Index: </label>
-    <input type="text" id="semiDetachedIndex" [value]="_product?.SemiDetachedIndex| number">
+    <input type="text" id="semiDetachedIndex"
+           formControlName="semiDetachedIndex"
+           [value]="_product?.SemiDetachedIndex| number">
   </div>
   <div>
     <label for="flatPrice">Flat Price: </label>
-    <input type="text" id="flatPrice" [value]="_product?.FlatPrice| number">
+    <input type="text" id="flatPrice"
+           formControlName="flatPrice"
+           [value]="_product?.FlatPrice| number">
   </div>
   <div>
     <label for="flatIndex">Flat Index: </label>
-    <input type="text" id="flatIndex" [value]="_product?.FlatIndex| number">
+    <input type="text" id="flatIndex"
+           formControlName="flatIndex"
+           [value]="_product?.FlatIndex| number">
   </div>
   <label for="terracedPrice">Terraced Price </label>
-  <input type="text" id="terracedPrice" [value]="_product?.TerracedPrice| number">
+  <input type="text" id="terracedPrice"
+         formControlName="terracedPrice"
+         [value]="_product?.TerracedPrice| number">
   <div>
     <label for="terracedIndex">Terraced Index </label>
-    <input type="text" id="terracedIndex" [value]="_product?.TerracedIndex| number">
+    <input type="text" id="terracedIndex"
+           formControlName="terracedIndex"
+           [value]="_product?.TerracedIndex| number">
   </div>
   <button class="btn btn-secondary" type="submit"
           (click)="save(_product)">Save
@@ -77,4 +95,4 @@
   <button class="btn btn-secondary" (click)="reset()">Reset</button>
   <button class="btn-secondary btn" (click)="goBack()">Cancel</button>
 </form>
-
+<p>{{formGroup.value | json }}</p>

@@ -13,7 +13,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class EditPageComponent implements OnInit {
   public _product: Product;
-  id: number;
+  Id: number;
   title: string = "Edit Product";
   message: string = '';
   regionNameOptions: string[] = ["Greater Manchester", "Merseyside", "South Yorkshire",
@@ -25,16 +25,17 @@ export class EditPageComponent implements OnInit {
               private location: Location,
               private formBuilder: FormBuilder) {
     this.createForm();
-    console.table(this.formGroup);
   }
 
   ngOnInit(): void {
     this.getProduct();
+    console.table(this.formGroup);
   }
 
   createForm(): void {
+
     this.formGroup = this.formBuilder.group({
-      id: [this.id, Validators.required],
+      id: [this._product?.id, Validators.required],
       date: [this._product?.Date, [Validators.required]],
       regionName: [this._product?.RegionName, Validators.required],
       area: [this._product?.Area, Validators.required],
@@ -55,26 +56,10 @@ export class EditPageComponent implements OnInit {
   getProduct(): void {
     this.route.paramMap.pipe(
       switchMap((param: ParamMap) => {
-        this.id = +param.get("id");
-        return this.productService.getProductbyId(this.id);
+        this.Id = +param.get("id");
+        return this.productService.getProductbyId(this.Id);
       }), map((product) => this._product = product)
     ).subscribe();
-  }
-
-  save(product: Product): void {
-    if (this._product) {
-      this.productService.updateProduct(product)
-        .subscribe(() => this.goBack())
-    }
-  }
-
-  reset() {
-    console.log("reset this madafaka");
-    this.formGroup.reset();
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 
   onChange(regionName: string) {
@@ -111,5 +96,81 @@ export class EditPageComponent implements OnInit {
         break;
 
     }
+  }
+
+  save(product: Product): void {
+    if (this._product) {
+      this.productService.updateProduct(product)
+        .subscribe(() => this.goBack())
+    }
+  }
+
+  reset() {
+    console.log("reset this madafaka");
+    this.formGroup.reset();
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  get id() {
+    return this.formGroup.get("id");
+  }
+
+  get regionName() {
+    return this.formGroup.get("regionName");
+  }
+
+  get area() {
+    return this.formGroup.get("area");
+  }
+
+  get areaCode() {
+    return this.formGroup.get("areaCode");
+  }
+
+  get date() {
+    return this.formGroup.get("date");
+  }
+
+  get averagePrice() {
+    return this.formGroup.get("averagePrice");
+  }
+
+  get index() {
+    return this.formGroup.get("index");
+  }
+
+  get detachedPrice() {
+    return this.formGroup.get("detachedPrice");
+  }
+
+  get detachedIndex() {
+    return this.formGroup.get("detachedIndex");
+  }
+
+  get semiDetachedPrice() {
+    return this.formGroup.get("semiDetachedPrice");
+  }
+
+  get semiDetachedIndex() {
+    return this.formGroup.get("semiDetachedIndex");
+  }
+
+  get flatPrice() {
+    return this.formGroup.get("semiDetachedIndex");
+  }
+
+  get flatIndex() {
+    return this.formGroup.get("semiDetachedIndex");
+  }
+
+  get terracedPrice() {
+    return this.formGroup.get("semiDetachedIndex");
+  }
+
+  get terracedIndex() {
+    return this.formGroup.get("semiDetachedIndex");
   }
 }

@@ -1,6 +1,6 @@
 export interface Product {
   id: number;
-  Date: string;
+  Date: Date;
   RegionName: string;
   Area: string;
   AreaCode: string;
