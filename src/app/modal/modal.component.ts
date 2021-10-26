@@ -10,6 +10,9 @@ import {Router} from "@angular/router";
 })
 export class ModalComponent implements OnInit {
   id: number
+  title: string;
+  text: string;
+  action: string;
   @Output() rickRoll = new EventEmitter();
 
   constructor(public modalRef: MdbModalRef<ModalComponent>,

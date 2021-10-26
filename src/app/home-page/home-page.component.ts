@@ -47,13 +47,15 @@ export class HomePageComponent implements OnInit, OnDestroy {
     });
   }
 
-  openPopUp(id: number) {
+  openPopUp(id: number, title: string, text: string, action: string) {
     this.modalRef = this.modalService.open(ModalComponent, {
       data: {
-        id: id
+        id: id,
+        title: title,
+        text: text,
+        action: action
       },
     });
-
   }
 
   ngOnDestroy() {
