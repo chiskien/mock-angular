@@ -29,11 +29,17 @@ export class ModalComponent implements OnInit {
     this.modalRef.close();
   }
 
-  onClick() {
-    this.productService.deleteProduct(this.id).subscribe(() => {
-      this.route.navigate(['/home']).then(() => {
-        window.location.reload();
-      })
-    })
+  onClick(action: string) {
+    switch (action) {
+      case "delete":
+        this.productService.deleteProduct(this.id).subscribe(() => {
+          this.route.navigate(['/home']).then(() => {
+            window.location.reload();
+          })
+        })
+        break;
+      case "reset":
+    }
+
   }
 }

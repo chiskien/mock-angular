@@ -2,8 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
-import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {ModalComponent} from "../modal/modal.component";
+import {OpenModalService} from "../services/open-modal.service";
 
 @Component({
   selector: 'app-home-page',
@@ -17,10 +16,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
     "Detached Price", "Detached Index"];
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
-  modalRef: MdbModalRef<ModalComponent>;
 
   constructor(private productService: ProductService, private router: Router,
-              private modalService: MdbModalService) {
+              private modal: OpenModalService) {
   }
 
   ngOnInit(): void {
@@ -48,14 +46,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   openPopUp(id: number, title: string, text: string, action: string) {
-    this.modalRef = this.modalService.open(ModalComponent, {
-      data: {
-        id: id,
-        title: title,
-        text: text,
-        action: action
-      },
-    });
+    this.modal.openPopUp(id, title, text, action);
   }
 
   ngOnDestroy() {
