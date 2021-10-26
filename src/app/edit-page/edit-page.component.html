@@ -104,7 +104,11 @@
   <button class="btn btn-secondary" type="submit"
           (click)="save(formGroup.value)">Save
   </button>
-  <button type="reset" class="btn btn-secondary" (click)="reset()">Reset</button>
+  <button type="button" class="btn btn-secondary"
+          (click)="openPopUp(_product.id,'Reset all'
+           ,'Are you sure to reset all ?','Reset')">
+    Reset
+  </button>
   <button type="button" class="btn-secondary btn" (click)="goBack()">Cancel</button>
   <p>{{formGroup.value | json}}</p>
   <p>{{_product|json}}</p>
