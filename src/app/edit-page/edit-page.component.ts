@@ -24,32 +24,32 @@ export class EditPageComponent implements OnInit {
               private route: ActivatedRoute,
               private location: Location,
               private formBuilder: FormBuilder) {
-    this.createForm();
+    this.createForm(this._product);
   }
 
   ngOnInit(): void {
     this.getProduct();
     console.table(this.formGroup);
+
   }
 
-  createForm(): void {
-
+  createForm(_product: Product): void {
     this.formGroup = this.formBuilder.group({
-      id: [this._product?.id, Validators.required],
-      date: [this._product?.Date, [Validators.required]],
-      regionName: [this._product?.RegionName, Validators.required],
-      area: [this._product?.Area, Validators.required],
-      areaCode: [this._product?.AreaCode, Validators.required],
-      averagePrice: [this._product?.AveragePrice, [Validators.required]],
-      index: [this._product?.Index, [Validators.required]],
-      detachedPrice: [this._product?.DetachedPrice, [Validators.required]],
-      detachedIndex: [this._product?.DetachedIndex, [Validators.required]],
-      semiDetachedIndex: [this._product?.SemiDetachedIndex, [Validators.required]],
-      semiDetachedPrice: [this._product?.SemiDetachedPrice, [Validators.required]],
-      terracedPrice: [this._product?.TerracedPrice, [Validators.required]],
-      terracedIndex: [this._product?.TerracedIndex, [Validators.required]],
-      flatIndex: [this._product?.FlatIndex, [Validators.required]],
-      flatPrice: [this._product?.FlatPrice, [Validators.required]],
+      id: [_product?.id, Validators.required],
+      date: [_product?.Date],
+      regionName: [_product?.RegionName, Validators.required],
+      area: [_product?.Area, Validators.required],
+      areaCode: [_product?.AreaCode, Validators.required],
+      averagePrice: [_product?.AveragePrice, [Validators.required]],
+      index: [_product?.Index, [Validators.required]],
+      detachedPrice: [_product?.DetachedPrice, [Validators.required]],
+      detachedIndex: [_product?.DetachedIndex, [Validators.required]],
+      semiDetachedIndex: [_product?.SemiDetachedIndex, [Validators.required]],
+      semiDetachedPrice: [_product?.SemiDetachedPrice, [Validators.required]],
+      terracedPrice: [_product?.TerracedPrice, [Validators.required]],
+      terracedIndex: [_product?.TerracedIndex, [Validators.required]],
+      flatIndex: [_product?.FlatIndex, [Validators.required]],
+      flatPrice: [_product?.FlatPrice, [Validators.required]],
     })
   }
 
@@ -58,8 +58,10 @@ export class EditPageComponent implements OnInit {
       switchMap((param: ParamMap) => {
         this.Id = +param.get("id");
         return this.productService.getProductbyId(this.Id);
-      }), map((product) => this._product = product)
-    ).subscribe();
+      }), map((product: Product) => this._product = product)
+    ).subscribe((product: Product) => {
+      this.createForm(product);
+    });
   }
 
   onChange(regionName: string) {

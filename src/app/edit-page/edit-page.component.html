@@ -6,17 +6,18 @@
 <form class="form-group" [formGroup]="formGroup">
   <div>
     <label for="productId">Product id</label>
-    <input readonly id="productId" [value]="_product?.id" formControlName="id">
+    <input readonly id="productId"
+           formControlName="id">
   </div>
   <div>
     <label for="date">Date: </label>
-    <input type="date" id="date" [value]="_product?.Date | date:'YYYY-MM-dd' "
-           formControlName="date">
+    <input type="date" id="date"
+           formControlName="date"
+           [value]="date.value | date:'shortDate'">
   </div>
   <div>
     <label for="RegionName">Region Name: </label>
     <select name="RegionName" formControlName="regionName"
-            [value]="_product?.RegionName"
             id="RegionName" (change)="onChange($event.target['value'])">
       <option *ngFor="let option of regionNameOptions" [ngValue]="option">
         {{option}}
@@ -25,74 +26,75 @@
   </div>
   <div>
     <label for="area">Area: </label>
-    <input type="text" id="area" readonly [value]="_product?.Area">
+    <input type="text" id="area" readonly>
   </div>
   <div>
     <label for="areaCode">AreaCode: </label>
-    <input type="text" id="areaCode" readonly [value]="_product?.AreaCode">
+    <input type="text" id="areaCode" readonly>
   </div>
   <div>
     <label for="averagePrice">Average Price: </label>
     <input type="text" id="averagePrice"
            formControlName="averagePrice"
-           [value]="_product?.AveragePrice | number">
+           [value]="averagePrice.value | number">
+
   </div>
   <div>
     <label for="index">Index: </label>
     <input type="text" id="index"
            formControlName="index"
-           [value]="_product?.Index | number">
+           [value]="index.value | number">
   </div>
   <div>
     <label for="detachedPrice">Detached Price: </label>
     <input type="text" id="detachedPrice"
            formControlName="detachedPrice"
-           [value]="_product?.DetachedPrice| number">
+           [value]="detachedPrice.value | number">
   </div>
   <div>
     <label for="detachedIndex">Detached Index: </label>
     <input type="text" id="detachedIndex"
            formControlName="detachedIndex"
-           [value]="_product?.DetachedIndex| number">
+           [value]="detachedIndex.value | number">
   </div>
   <div>
     <label for="semiDetachedPrice">SemiDetached Price: </label>
     <input type="text" id="semiDetachedPrice"
            formControlName="semiDetachedPrice"
-           [value]="_product?.SemiDetachedPrice| number">
+           [value]="semiDetachedPrice.value | number">
   </div>
   <div>
     <label for="semiDetachedIndex">SemiDetached Index: </label>
     <input type="text" id="semiDetachedIndex"
            formControlName="semiDetachedIndex"
-           [value]="_product?.SemiDetachedIndex| number">
+           [value]="semiDetachedIndex.value | number">
   </div>
   <div>
     <label for="flatPrice">Flat Price: </label>
     <input type="text" id="flatPrice"
            formControlName="flatPrice"
-           [value]="_product?.FlatPrice| number">
+           [value]="flatPrice.value | number">
   </div>
   <div>
     <label for="flatIndex">Flat Index: </label>
     <input type="text" id="flatIndex"
            formControlName="flatIndex"
-           [value]="_product?.FlatIndex| number">
+           [value]="flatIndex.value | number">
   </div>
   <label for="terracedPrice">Terraced Price </label>
   <input type="text" id="terracedPrice"
          formControlName="terracedPrice"
-         [value]="_product?.TerracedPrice| number">
+         [value]="terracedPrice.value | number">
   <div>
     <label for="terracedIndex">Terraced Index </label>
     <input type="text" id="terracedIndex"
            formControlName="terracedIndex"
-           [value]="_product?.TerracedIndex| number">
+           [value]="terracedIndex.value | number">
   </div>
   <button class="btn btn-secondary" type="submit"
           (click)="save(_product)">Save
   </button>
   <button class="btn btn-secondary" (click)="reset()">Reset</button>
   <button class="btn-secondary btn" (click)="goBack()">Cancel</button>
+  <p>{{formGroup.value | json}}</p>
 </form>
-<p>{{formGroup.value | json }}</p>
