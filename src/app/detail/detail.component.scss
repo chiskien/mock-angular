@@ -8,3 +8,7 @@
 }
 
 @import "../home-page/home-page.component";
+.container {
+  display: flex;
+  justify-content: center;
+}
