@@ -16,6 +16,7 @@ import {HeaderComponent} from './header/header.component';
 import {MdbModalModule} from "mdb-angular-ui-kit/modal";
 import {ModalComponent} from './modal/modal.component';
 import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
+import {MdbValidationModule} from "mdb-angular-ui-kit/validation";
 
 // For MDB Angular Free
 
@@ -39,7 +40,8 @@ import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
     FormsModule,
     MdbModalModule,
     MdbFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdbValidationModule
   ],
   providers: [],
   bootstrap: [AppComponent],

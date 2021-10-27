@@ -1,9 +1,19 @@
 @import "../home-page/home-page.component";
 
-.container {
+.wrapper {
+  display: flex;
   justify-content: center;
 }
 
 .btn {
   margin: 20px;
+}
+
+.form-ck {
+  margin-top: 20px;
+}
+
+.action-list {
+  display: flex;
+  justify-content: space-evenly;
 }
