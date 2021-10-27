@@ -77,10 +77,11 @@ export class EditPageComponent implements OnInit, OnDestroy {
   getProduct(): void {
     this.param = this.route.paramMap.pipe(
       switchMap((param: ParamMap) => {
-        this.Id = +param.get("id");
-        return this.productService.getProductbyId(this.Id);
-      }), map((product: Product) => this._product = product),
-      catchError(err => {
+          this.Id = +param.get("id");
+          return this.productService.getProductbyId(this.Id);
+        }
+      ), map((product: Product) => this._product = product),
+      catchError(() => {
         this.title = `Not found product with id: ${this.Id}`
         this.available = false;
         return of(null)

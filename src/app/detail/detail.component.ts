@@ -3,8 +3,8 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
-import {Subscription} from "rxjs";
-import {map, switchMap} from "rxjs/operators";
+import {of, Subscription} from "rxjs";
+import {catchError, map, switchMap} from "rxjs/operators";
 import {ModalComponent} from "../modal/modal.component";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 
@@ -15,6 +15,7 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 })
 export class DetailComponent implements OnInit, OnDestroy {
   title: string = "Product detail"
+  available: boolean = true;
   public _product: Product;
   param: Subscription = new Subscription();
   id: number = 0;
@@ -37,6 +38,11 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.id = +param.get("id");
         return this.productService.getProductbyId(this.id);
       }), map((product) => this._product = product)
+      , catchError(() => {
+        this.title = "Not found product";
+        this.available = false;
+        return of(null);
+      })
     ).subscribe();
   }
 

@@ -4,28 +4,33 @@
     <button class="btn btn-dark" (click)="goBack()">Go back</button>
   </div>
 </div>
-<div class="container">
-  <div class="wrapper">
-    <p>Product id: {{_product?.id}}</p>
-    <p>Date: {{_product?.Date}}</p>
-    <p>Region name: {{_product?.RegionName}}</p>
-    <p>Area: {{_product?.Area}}</p>
-    <p>Area code: {{_product?.AreaCode}}</p>
-    <p>Average price: {{_product?.AveragePrice | number}}</p>
-    <p>Index: {{_product?.Index | number}}</p>
-    <p>IndexSA: {{_product?.IndexSA}}</p>
-    <p>Detached Price: {{_product?.DetachedPrice | number}}</p>
-    <p>Detached Index: {{_product?.DetachedIndex | number}}</p>
-    <p>SemiDetached Index: {{_product?.SemiDetachedIndex | number}}</p>
-    <p>SemiDetached Price: {{_product?.SemiDetachedPrice | number}}</p>
-    <p>Flat Price: {{_product?.FlatPrice | number}}</p>
-    <p>Flat Index: {{_product?.FlatIndex| number}}</p>
-    <p>Terraced Price: {{_product?.TerracedPrice| number}}</p>
-    <p>Terraced Index: {{_product?.TerracedIndex| number}}</p>
-    <button class="btn btn-info" (click)="editProduct()">Edit</button>
-    <button type="button" class="btn btn-ck btn-danger"
-            (click)="openPopUp(_product.id)">
-      <i class="fas fa-trash-alt"></i>
-    </button>
+<ng-container *ngIf="!available;else reveal">
+
+</ng-container>
+<ng-template #reveal>
+  <div class="container">
+    <div class="wrapper">
+      <p>Product id: {{_product?.id}}</p>
+      <p>Date: {{_product?.Date}}</p>
+      <p>Region name: {{_product?.RegionName}}</p>
+      <p>Area: {{_product?.Area}}</p>
+      <p>Area code: {{_product?.AreaCode}}</p>
+      <p>Average price: {{_product?.AveragePrice | number}}</p>
+      <p>Index: {{_product?.Index | number}}</p>
+      <p>IndexSA: {{_product?.IndexSA}}</p>
+      <p>Detached Price: {{_product?.DetachedPrice | number}}</p>
+      <p>Detached Index: {{_product?.DetachedIndex | number}}</p>
+      <p>SemiDetached Index: {{_product?.SemiDetachedIndex | number}}</p>
+      <p>SemiDetached Price: {{_product?.SemiDetachedPrice | number}}</p>
+      <p>Flat Price: {{_product?.FlatPrice | number}}</p>
+      <p>Flat Index: {{_product?.FlatIndex| number}}</p>
+      <p>Terraced Price: {{_product?.TerracedPrice| number}}</p>
+      <p>Terraced Index: {{_product?.TerracedIndex| number}}</p>
+      <button class="btn btn-info" (click)="editProduct()">Edit</button>
+      <button type="button" class="btn btn-ck btn-danger"
+              (click)="openPopUp(_product.id)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
   </div>
-</div>
+</ng-template>
