@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
+import {Product} from "../models/product";
 
 @Component({
   selector: 'app-modal',
@@ -13,6 +14,7 @@ export class ModalComponent implements OnInit {
   title: string;
   text: string;
   action: string;
+  product: Product;
   @Output() rickRoll = new EventEmitter();
 
   constructor(public modalRef: MdbModalRef<ModalComponent>,
@@ -29,8 +31,8 @@ export class ModalComponent implements OnInit {
     this.modalRef.close();
   }
 
-  onClick(action: string) {
-    switch (action) {
+  onClick() {
+    switch (this.action) {
       case "delete":
         this.productService.deleteProduct(this.id).subscribe(() => {
           this.route.navigate(['/home']).then(() => {
@@ -39,6 +41,13 @@ export class ModalComponent implements OnInit {
         })
         break;
       case "reset":
+        
+        break;
+      case "update":
+        // this.productService.updateProduct(this.id).subscribe()
+        break;
+      case "cancel":
+        break;
     }
 
   }

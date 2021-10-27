@@ -17,7 +17,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   index: string[] = ["id", "Date", "RegionName", "Area", "AveragePrice", "Index",
     "SalesVolume", "DetachedPrice", "DetachedIndex"];
 
-  constructor(private productService: ProductService, private router: Router,
+  constructor(private productService: ProductService,
+              private router: Router,
               private modal: OpenModalService) {
   }
 
@@ -48,7 +49,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   openPopUp(id: number, title: string, text: string, action: string) {
     this.modal.openPopUp(id, title, text, action);
   }
-
+ 
   ngOnDestroy() {
     this.getProducts().unsubscribe();
   }

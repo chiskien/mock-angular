@@ -105,11 +105,16 @@
           (click)="save(formGroup.value)">Save
   </button>
   <button type="button" class="btn btn-secondary"
-          (click)="openPopUp(_product.id,'Reset all'
-           ,'Are you sure to reset all ?','Reset')">
+          (click)="openPopUp(_product.id,
+          'Reset Form','Are you sure to reset all ?',
+          'reset')">
     Reset
   </button>
-  <button type="button" class="btn-secondary btn" (click)="goBack()">Cancel</button>
-  <p>{{formGroup.value | json}}</p>
-  <p>{{_product|json}}</p>
+  <button type="button" class="btn-secondary btn"
+          (click)="openPopUp(_product.id,'Cancel',
+          'Are you sure to cancel ?', 'cancel')">
+    Cancel
+  </button>
+  <!--  <p>{{formGroup.value | json}}</p>-->
+  <!--  <p>{{_product|json}}</p>-->
 </form>

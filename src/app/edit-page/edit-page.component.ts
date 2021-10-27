@@ -6,8 +6,7 @@ import {Location} from "@angular/common";
 import {map, switchMap} from "rxjs/operators";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
-import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {ModalComponent} from "../modal/modal.component";
+import {OpenModalService} from "../services/open-modal.service";
 
 @Component({
   selector: 'app-edit-page',
@@ -23,13 +22,12 @@ export class EditPageComponent implements OnInit, OnDestroy {
   regionNameOptions: string[] = ["Greater Manchester", "Merseyside", "South Yorkshire",
     "Tyne and Wear", "West Midlands", "West Yorkshire"];
   formGroup: FormGroup;
-  modalRef: MdbModalRef<ModalComponent>;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private location: Location,
               private formBuilder: FormBuilder,
-              public modalService: MdbModalService) {
+              public openModal: OpenModalService) {
     this.createForm(this._product);
   }
 
@@ -38,14 +36,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   }
 
   openPopUp(id: number, title: string, text: string, action: string) {
-    this.modalRef = this.modalService.open(ModalComponent, {
-      data: {
-        id: id,
-        title: title,
-        text: text,
-        action: action
-      },
-    });
+    this.openModal.openPopUp(id, title, text, action)
   }
 
   createForm(_product: Product): void {

@@ -19,27 +19,39 @@ export class CreateComponent implements OnInit {
 
   createForm() {
     this.productForm = this.formBuilder.group({
-      id: [],
-      Date: ["", Validators.required],
-      RegionName: [],
-      Area: [],
-      AreaCode: [],
-      AveragePrice: [],
-      Index: [],
+      id: [Validators.required],
+      Date: [],
+      RegionName: [Validators.required],
+      Area: [Validators.required],
+      AreaCode: [Validators.required],
+      AveragePrice: [[Validators.required]],
+      Index: [[Validators.required]],
       IndexSA: [],
+      "1m%Change": [],
+      "12m%Change": [],
+      AveragePriceSA: [],
       SalesVolume: [],
-      DetachedPrice: [],
-      DetachedIndex: [],
-      SemiDetachedPrice: [],
-      SemiDetachedIndex: [],
-      TerracedIndex: [],
-      TerracedPrice: [],
-      FlatIndex: [],
-      FlatPrice: []
+      DetachedPrice: [[Validators.required]],
+      DetachedIndex: [[Validators.required]],
+      SemiDetachedIndex: [[Validators.required]],
+      SemiDetachedPrice: [[Validators.required]],
+      TerracedPrice: [[Validators.required]],
+      TerracedIndex: [[Validators.required]],
+      FlatIndex: [[Validators.required]],
+      FlatPrice: [[Validators.required]],
+      "Detached1m%Change": [],
+      "Detached12m%Change": [],
+      "SemiDetached12m%Change": [],
+      "SemiDetached1m%Change": [],
+      "Terraced1m%Change": [],
+      "Terraced12m%Change": [],
+      "Flat12m%Change": [],
+      "Flat1m%Change": [],
     })
   }
 
   ngOnInit(): void {
+
   }
 
   backTotheHomePage() {

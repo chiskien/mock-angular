@@ -21,4 +21,15 @@ export class OpenModalService {
       },
     });
   }
+
+  openPopUpwithObj(object: Object, title: string, text: string, action: string) {
+    this.modalRef = this.modalService.open(ModalComponent, {
+      data: {
+        object: object,
+        title: title,
+        text: text,
+        action: action
+      },
+    });
+  }
 }
