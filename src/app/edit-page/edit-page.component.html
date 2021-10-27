@@ -17,7 +17,7 @@
       <label for="date">Date: </label>
       <input type="date" id="date"
              formControlName="Date"
-             [value]="Date.value | date:'yyyy/dd/MM'">
+             [value]="Date.value | date: 'yyyy-MM-dd'">
     </div>
     <div>
       <label for="RegionName">Region Name: </label>
@@ -31,11 +31,13 @@
     <div>
       <label for="area">Area: </label>
       <input type="text" id="area"
+             readonly
              formControlName="Area">
     </div>
     <div>
       <label for="areaCode">AreaCode: </label>
       <input type="text" id="areaCode"
+             readonly
              formControlName="AreaCode"
       >
     </div>
@@ -109,20 +111,18 @@
             (click)="openPopUpwithObject(formGroup,'Update Product',
           'Are you sure to update this product','update')">Save
     </button>
-    <button type="button" class="btn btn-secondary"
+    <button type="button" class="btn btn-danger"
             (click)="openPopUpwithObject(formGroup,
           'Reset Form','Are you sure to reset all ?',
           'reset')">
       Reset
     </button>
-    <!--  <button type="button" class="btn-secondary btn"-->
-    <!--          (click)="openPopUp(_product.id,'Cancel',-->
-    <!--          'Are you sure to cancel ?', 'cancel')">-->
-    <!--    Cancel-->
-    <!--  </button>-->
-    <button class="btn btn-secondary" type="button" (click)="goBack()">
+    <button type="button" class="btn-dark btn"
+            (click)="openPopUpwithObject(formGroup,'Cancel',
+              'Are you sure to cancel ?', 'cancel')">
       Cancel
     </button>
+
     <p>{{formGroup.value | json}}</p>
   </form>
 </ng-template>

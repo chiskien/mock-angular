@@ -41,4 +41,7 @@ export class ProductService {
     return this.http.delete<Product>(this.url + id, this.httpOptions);
   }
 
+  createProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url, product, this.httpOptions);
+  }
 }

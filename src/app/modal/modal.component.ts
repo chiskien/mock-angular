@@ -40,7 +40,12 @@ export class ModalComponent implements OnInit {
   onClick() {
     switch (this.action) {
       case "create":
-        this.productService.createProduct().subscribe();
+        this.product = this.form.value;
+        this.productService.createProduct(this.product).subscribe(() => {
+          this.location.back();
+          console.table(this.product);
+          this.modalRef.close();
+        });
         break;
       case "delete":
         this.productService.deleteProduct(this.id).subscribe(() => {
@@ -63,6 +68,7 @@ export class ModalComponent implements OnInit {
         })
         break;
       case "cancel":
+        this.location.back();
         this.modalRef.close();
         break;
     }

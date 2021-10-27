@@ -44,7 +44,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   createForm(_product: Product): void {
     this.formGroup = this.formBuilder.group({
       id: [_product?.id, Validators.required],
-      Date: [_product?.Date],
+      Date: [this._product?.Date, [Validators.required]],
       RegionName: [_product?.RegionName, Validators.required],
       Area: [_product?.Area, Validators.required],
       AreaCode: [_product?.AreaCode, Validators.required],
@@ -54,7 +54,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
       "1m%Change": [_product?.["1m%Change"]],
       "12m%Change": [_product?.["12m%Change"]],
       AveragePriceSA: [_product?.AveragePriceSA],
-      SalesVolume: [_product?.SalesVolume],
+      SalesVolume: [_product?.SalesVolume,
+        [Validators.required, Validators.min(0)]],
       DetachedPrice: [_product?.DetachedPrice, [Validators.required]],
       DetachedIndex: [_product?.DetachedIndex, [Validators.required]],
       "Detached1m%Change": [_product?.["Detached1m%Change"]],
@@ -88,7 +89,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
       })
     ).subscribe((product: Product) => {
       this.createForm(product);
-      this.onChange(product?.RegionName);
     });
   }
 
@@ -96,23 +96,23 @@ export class EditPageComponent implements OnInit, OnDestroy {
     switch (regionName) {
       case "Greater Manchester":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "Northwest",
-          areaCode: "E11000001"
+          RegionName: regionName,
+          Area: "Northwest",
+          AreaCode: "E11000001"
         });
         break;
       case "Merseyside":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "Northwest",
-          areaCode: "E11000002"
+          RegionName: regionName,
+          Area: "Northwest",
+          AreaCode: "E11000002"
         });
         break;
       case "South Yorkshire":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "North",
-          areaCode: "E11000003"
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000003"
         });
         break;
       case "Tyne and Wear":
@@ -124,20 +124,19 @@ export class EditPageComponent implements OnInit, OnDestroy {
         break;
       case "West Midlands":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "Midlands",
-          areaCode: "E11000005"
+          RegionName: regionName,
+          Area: "Midlands",
+          AreaCode: "E11000005"
         });
         break;
       case "West Yorkshire":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "North",
-          areaCode: "E11000006"
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000006"
         });
         break;
     }
-
   }
 
   reset() {
