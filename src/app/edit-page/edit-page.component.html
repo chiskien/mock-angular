@@ -32,14 +32,15 @@
       <label for="area">Area: </label>
       <input type="text" id="area"
              readonly
-             formControlName="Area">
+             formControlName="Area"
+             [value]="Area.value">
     </div>
     <div>
       <label for="areaCode">AreaCode: </label>
       <input type="text" id="areaCode"
              readonly
              formControlName="AreaCode"
-      >
+             [value]="AreaCode.value">
     </div>
     <div>
       <label for="averagePrice">Average Price: </label>
