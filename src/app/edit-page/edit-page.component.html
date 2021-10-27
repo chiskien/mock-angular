@@ -102,7 +102,8 @@
            [value]="TerracedIndex.value | number">
   </div>
   <button class="btn btn-secondary" type="submit"
-          (click)="save(formGroup.value)">Save
+          (click)="openPopUpwithObject(formGroup,'Update Product',
+          'Are you sure to update this product','update')">Save
   </button>
   <button type="button" class="btn btn-secondary"
           (click)="openPopUp(_product.id,
@@ -115,6 +116,6 @@
           'Are you sure to cancel ?', 'cancel')">
     Cancel
   </button>
-  <!--  <p>{{formGroup.value | json}}</p>-->
-  <!--  <p>{{_product|json}}</p>-->
+  <p>{{formGroup.value | json}}</p>
+  <p>{{_product|json}}</p>
 </form>

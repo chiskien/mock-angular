@@ -3,6 +3,7 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
 import {Product} from "../models/product";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-modal',
@@ -15,6 +16,7 @@ export class ModalComponent implements OnInit {
   text: string;
   action: string;
   product: Product;
+  form: FormGroup;
   @Output() rickRoll = new EventEmitter();
 
   constructor(public modalRef: MdbModalRef<ModalComponent>,
@@ -25,6 +27,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log()
   }
 
   close() {
@@ -44,7 +47,12 @@ export class ModalComponent implements OnInit {
         
         break;
       case "update":
-        // this.productService.updateProduct(this.id).subscribe()
+        this.product = this.form.value;
+        this.productService.updateProduct(this.product).subscribe(() => {
+          console.table(this.product);
+        }, () => {
+          console.error("Update fail")
+        })
         break;
       case "cancel":
         break;

@@ -27,7 +27,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private location: Location,
               private formBuilder: FormBuilder,
-              public openModal: OpenModalService) {
+              public openModalService: OpenModalService) {
     this.createForm(this._product);
   }
 
@@ -36,7 +36,11 @@ export class EditPageComponent implements OnInit, OnDestroy {
   }
 
   openPopUp(id: number, title: string, text: string, action: string) {
-    this.openModal.openPopUp(id, title, text, action)
+    this.openModalService.openPopUp(id, title, text, action)
+  }
+
+  openPopUpwithObject(form: FormGroup, title: string, text: string, action: string) {
+    this.openModalService.openPopUpwithForm(form, this._product, title, text, action);
   }
 
   createForm(_product: Product): void {

@@ -34,7 +34,7 @@ export class ProductService {
   updateProduct(product: Product): Observable<any> {
 
     return this.http.put(this.url + `${product.id}`, product, this.httpOptions)
-      .pipe(tap(_ => console.log(`Update Product with ${product.id} successfully`)));
+      .pipe(tap(_ => console.log(`Update Product with id: ${product.id} successfully`)));
   }
 
   deleteProduct(id: number): Observable<Product> {
