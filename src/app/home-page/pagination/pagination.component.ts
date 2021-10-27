@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -10,9 +10,9 @@ export class PaginationComponent implements OnInit {
   @Output() selectItemPerPage = new EventEmitter<number>();
   @Output() nextPage = new EventEmitter();
   @Output() prevPage = new EventEmitter();
-  currentPage: number;
   options: number[] = [10, 20, 50, 100];
-  rowPerPage: number = 10;
+  @Input() rowPerPage: number = 10;
+  @Input() currentPage: number = 10;
 
   constructor() {
   }
@@ -22,7 +22,15 @@ export class PaginationComponent implements OnInit {
 
   /* eslint-disable indent */
   updateItemPerPage(value: number) {
-    this.rowPerPage = value;
-    this.selectItemPerPage.emit(value);
+    this.rowPerPage = Number(value);
+    this.selectItemPerPage.emit(this.rowPerPage);
+  }
+
+  onNextPage() {
+    this.nextPage.emit();
+  }
+
+  onPrevPage() {
+    this.prevPage.emit();
   }
 }

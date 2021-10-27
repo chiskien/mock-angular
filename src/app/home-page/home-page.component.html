@@ -37,6 +37,11 @@
   </tr>
   </tbody>
 </table>
-<app-pagination (selectItemPerPage)="getProducts($event)"></app-pagination>
+<app-pagination (selectItemPerPage)="getProducts($event)"
+                [rowPerPage]="itemsPerPage"
+                [currentPage]="currentPage"
+                (nextPage)="nextPage()"
+                (prevPage)="prevPage()"
+></app-pagination>
 
 

@@ -11,7 +11,8 @@ import {OpenModalService} from "../services/open-modal.service";
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Product Table"
-  itemsPerPage: number;
+  itemsPerPage: number = 10;
+  currentPage: number = 1;
   public products$: Product[] = [];
   columns: string[] = ["id", "Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
@@ -29,9 +30,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   getProducts(item: number) {
     this.itemsPerPage = item;
-    return this.productService.getProduct(1, item).subscribe((response) => {
-      this.products$ = response
-    })
+    return this.productService.getProduct(this.currentPage, this.itemsPerPage)
+      .subscribe((response) => {
+        this.products$ = response
+        console.log(this.currentPage, this.itemsPerPage)
+      })
   }
 
   isNumber(value): boolean {
@@ -54,5 +57,23 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.getProducts(this.itemsPerPage).unsubscribe();
+  }
+
+  nextPage() {
+    this.currentPage += 1;
+    this.productService.getProduct(this.currentPage, this.itemsPerPage).subscribe(
+      (response) => this.products$ = response
+    );
+    console.log(this.currentPage, this.itemsPerPage)
+  }
+
+  prevPage() {
+    if (this.currentPage) {
+      this.currentPage -= 1;
+      this.productService.getProduct(this.currentPage, this.itemsPerPage).subscribe(
+        (response) => this.products$ = response
+      );
+      console.log(this.currentPage, this.itemsPerPage);
+    }
   }
 }

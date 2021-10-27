@@ -9,11 +9,14 @@
     </select>
     <div class="datatable-pagination-buttons">
       <button
-        class="btn btn-secondary datatable-pagination-button datatable-pagination-left">
+        class="btn btn-secondary datatable-pagination-button datatable-pagination-left"
+        [disabled]="this.currentPage === 1"
+        (click)="onPrevPage()">
         <span class="text-light"><i class="fas fa-chevron-left"></i></span>
       </button>
       <button
-        class="btn btn-secondary datatable-pagination-button datatable-pagination-right">
+        class="btn btn-secondary datatable-pagination-button datatable-pagination-right"
+        (click)="onNextPage()">
         <span class="text-light"><i class="fas fa-chevron-right"></i></span>
       </button>
     </div>
