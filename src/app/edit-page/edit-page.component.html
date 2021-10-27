@@ -19,13 +19,14 @@
         <mdb-form-control>
           <input mdbInput type="date" id="date" class="form-control"
                  formControlName="Date"
-                 [value]="Date.value | date: 'mediumDate'"/>
-          <label mdbLabel class="form-label" for="date">Date</label>
+                 [value]="Date.value| date:'yyyy-MM-dd' "/>
+          <!--          <label mdbLabel class="form-label" for="date">Date</label>-->
         </mdb-form-control>
       </div>
       <div class="form-ck">
-        <label for="RegionName">Region Name: </label>
+        <label for="RegionName" mdbLabel>Region Name: </label>
         <select name="RegionName" formControlName="RegionName"
+                class="select-input"
                 id="RegionName">
           <option *ngFor="let option of regionNameOptions" [ngValue]="option">
             {{option}}
@@ -35,7 +36,7 @@
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput type="text"
-                 readonly
+                 [readonly]="true"
                  [value]="Area.value"
                  id="area" class="form-control"
                  formControlName="Area"/>
@@ -45,7 +46,7 @@
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput type="text"
-                 readonly
+                 [readonly]="true"
                  [value]="AreaCode.value"
                  id="areaCode" class="form-control"
                  formControlName="AreaCode"/>

@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
   createForm() {
     this.formGroup = this.formBuilder.group({
       Date: ["", Validators.required],
-      RegionName: ["", Validators.required],
+      RegionName: [Validators.required],
       Area: ["", Validators.required],
       AreaCode: ["", Validators.required],
       AveragePrice: ["", [Validators.required]],

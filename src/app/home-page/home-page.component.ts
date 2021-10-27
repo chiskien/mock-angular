@@ -11,6 +11,7 @@ import {OpenModalService} from "../services/open-modal.service";
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   title: string = "Product Table"
+  itemsPerPage: number;
   public products$: Product[] = [];
   columns: string[] = ["id", "Date", "Region Name", "Area", "Average Price", "Index", "Sales Volume",
     "Detached Price", "Detached Index"];
@@ -23,11 +24,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts(this.itemsPerPage);
   }
 
-  getProducts() {
-    return this.productService.getProduct().subscribe((response) => {
+  getProducts(item: number) {
+    this.itemsPerPage = item;
+    return this.productService.getProduct(1, item).subscribe((response) => {
       this.products$ = response
     })
   }
@@ -49,8 +51,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   openPopUp(id: number, title: string, text: string, action: string) {
     this.modal.openPopUp(id, title, text, action);
   }
- 
+
   ngOnDestroy() {
-    this.getProducts().unsubscribe();
+    this.getProducts(this.itemsPerPage).unsubscribe();
   }
 }

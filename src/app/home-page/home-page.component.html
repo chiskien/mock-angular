@@ -37,7 +37,6 @@
   </tr>
   </tbody>
 </table>
-<app-pagination [numberOfPages]="10"></app-pagination>
-
+<app-pagination (selectItemPerPage)="getProducts($event)"></app-pagination>
 
 
