@@ -3,119 +3,126 @@
   <div class="bonjour">
   </div>
 </div>
-<form class="form-group" [formGroup]="formGroup">
-  <div>
-    <label for="productId">Product id</label>
-    <input readonly id="productId"
-           formControlName="id">
-  </div>
-  <div>
-    <label for="date">Date: </label>
-    <input type="date" id="date"
-           formControlName="Date"
-           [value]="Date.value | date:'yyyy/dd/MM'">
-  </div>
-  <div>
-    <label for="RegionName">Region Name: </label>
-    <select name="RegionName" formControlName="RegionName"
-            id="RegionName" (change)="onChange($event.target['value'])">
-      <option *ngFor="let option of regionNameOptions" [ngValue]="option">
-        {{option}}
-      </option>
-    </select>
-  </div>
-  <div>
-    <label for="area">Area: </label>
-    <input type="text" id="area"
-           formControlName="Area">
-  </div>
-  <div>
-    <label for="areaCode">AreaCode: </label>
-    <input type="text" id="areaCode"
-           formControlName="AreaCode"
-    >
-  </div>
-  <div>
-    <label for="averagePrice">Average Price: </label>
-    <input type="text" id="averagePrice"
-           formControlName="AveragePrice"
-           [value]="AveragePrice.value | number">
+<ng-container *ngIf="!available;else reveal">
+  <button class="btn btn-dark" (click)="goBack()">Go back</button>
+</ng-container>
+<ng-template #reveal>
+  <form class="form-group" [formGroup]="formGroup">
+    <div>
+      <label for="productId">Product id</label>
+      <input readonly id="productId"
+             formControlName="id">
+    </div>
+    <div>
+      <label for="date">Date: </label>
+      <input type="date" id="date"
+             formControlName="Date"
+             [value]="Date.value | date:'yyyy/dd/MM'">
+    </div>
+    <div>
+      <label for="RegionName">Region Name: </label>
+      <select name="RegionName" formControlName="RegionName"
+              id="RegionName" (change)="onChange($event.target['value'])">
+        <option *ngFor="let option of regionNameOptions" [ngValue]="option">
+          {{option}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="area">Area: </label>
+      <input type="text" id="area"
+             formControlName="Area">
+    </div>
+    <div>
+      <label for="areaCode">AreaCode: </label>
+      <input type="text" id="areaCode"
+             formControlName="AreaCode"
+      >
+    </div>
+    <div>
+      <label for="averagePrice">Average Price: </label>
+      <input type="text" id="averagePrice"
+             formControlName="AveragePrice"
+             [value]="AveragePrice.value | number">
 
-  </div>
-  <div>
-    <label for="salesVolume">Sale Volume</label>
-    <input type="text" id="salesVolume"
-           formControlName="SalesVolume"
-           [value]="SalesVolume.value | number">
+    </div>
+    <div>
+      <label for="salesVolume">Sale Volume</label>
+      <input type="text" id="salesVolume"
+             formControlName="SalesVolume"
+             [value]="SalesVolume.value | number">
 
-  </div>
-  <div>
-    <label for="index">Index: </label>
-    <input type="text" id="index"
-           formControlName="Index"
-           [value]="Index.value | number">
-  </div>
-  <div>
-    <label for="detachedPrice">Detached Price: </label>
-    <input type="text" id="detachedPrice"
-           formControlName="DetachedPrice"
-           [value]="DetachedPrice.value | number">
-  </div>
-  <div>
-    <label for="detachedIndex">Detached Index: </label>
-    <input type="text" id="detachedIndex"
-           formControlName="DetachedIndex"
-           [value]="DetachedIndex.value | number">
-  </div>
-  <div>
-    <label for="semiDetachedPrice">SemiDetached Price: </label>
-    <input type="text" id="semiDetachedPrice"
-           formControlName="SemiDetachedPrice"
-           [value]="SemiDetachedPrice.value | number">
-  </div>
-  <div>
-    <label for="semiDetachedIndex">SemiDetached Index: </label>
-    <input type="text" id="semiDetachedIndex"
-           formControlName="SemiDetachedIndex"
-           [value]="SemiDetachedIndex.value | number">
-  </div>
-  <div>
-    <label for="flatPrice">Flat Price: </label>
-    <input type="text" id="flatPrice"
-           formControlName="FlatPrice"
-           [value]="FlatPrice.value | number">
-  </div>
-  <div>
-    <label for="flatIndex">Flat Index: </label>
-    <input type="text" id="flatIndex"
-           formControlName="FlatIndex"
-           [value]="FlatIndex.value | number">
-  </div>
-  <label for="terracedPrice">Terraced Price </label>
-  <input type="text" id="terracedPrice"
-         formControlName="TerracedPrice"
-         [value]="TerracedPrice.value | number">
-  <div>
-    <label for="terracedIndex">Terraced Index </label>
-    <input type="text" id="terracedIndex"
-           formControlName="TerracedIndex"
-           [value]="TerracedIndex.value | number">
-  </div>
-  <button class="btn btn-secondary" type="submit"
-          (click)="openPopUpwithObject(formGroup,'Update Product',
+    </div>
+    <div>
+      <label for="index">Index: </label>
+      <input type="text" id="index"
+             formControlName="Index"
+             [value]="Index.value | number">
+    </div>
+    <div>
+      <label for="detachedPrice">Detached Price: </label>
+      <input type="text" id="detachedPrice"
+             formControlName="DetachedPrice"
+             [value]="DetachedPrice.value | number">
+    </div>
+    <div>
+      <label for="detachedIndex">Detached Index: </label>
+      <input type="text" id="detachedIndex"
+             formControlName="DetachedIndex"
+             [value]="DetachedIndex.value | number">
+    </div>
+    <div>
+      <label for="semiDetachedPrice">SemiDetached Price: </label>
+      <input type="text" id="semiDetachedPrice"
+             formControlName="SemiDetachedPrice"
+             [value]="SemiDetachedPrice.value | number">
+    </div>
+    <div>
+      <label for="semiDetachedIndex">SemiDetached Index: </label>
+      <input type="text" id="semiDetachedIndex"
+             formControlName="SemiDetachedIndex"
+             [value]="SemiDetachedIndex.value | number">
+    </div>
+    <div>
+      <label for="flatPrice">Flat Price: </label>
+      <input type="text" id="flatPrice"
+             formControlName="FlatPrice"
+             [value]="FlatPrice.value | number">
+    </div>
+    <div>
+      <label for="flatIndex">Flat Index: </label>
+      <input type="text" id="flatIndex"
+             formControlName="FlatIndex"
+             [value]="FlatIndex.value | number">
+    </div>
+    <label for="terracedPrice">Terraced Price </label>
+    <input type="text" id="terracedPrice"
+           formControlName="TerracedPrice"
+           [value]="TerracedPrice.value | number">
+    <div>
+      <label for="terracedIndex">Terraced Index </label>
+      <input type="text" id="terracedIndex"
+             formControlName="TerracedIndex"
+             [value]="TerracedIndex.value | number">
+    </div>
+    <button class="btn btn-secondary" type="submit"
+            (click)="openPopUpwithObject(formGroup,'Update Product',
           'Are you sure to update this product','update')">Save
-  </button>
-  <button type="button" class="btn btn-secondary"
-          (click)="openPopUp(_product.id,
+    </button>
+    <button type="button" class="btn btn-secondary"
+            (click)="openPopUpwithObject(formGroup,
           'Reset Form','Are you sure to reset all ?',
           'reset')">
-    Reset
-  </button>
-  <button type="button" class="btn-secondary btn"
-          (click)="openPopUp(_product.id,'Cancel',
-          'Are you sure to cancel ?', 'cancel')">
-    Cancel
-  </button>
-  <p>{{formGroup.value | json}}</p>
-  <p>{{_product|json}}</p>
-</form>
+      Reset
+    </button>
+    <!--  <button type="button" class="btn-secondary btn"-->
+    <!--          (click)="openPopUp(_product.id,'Cancel',-->
+    <!--          'Are you sure to cancel ?', 'cancel')">-->
+    <!--    Cancel-->
+    <!--  </button>-->
+    <button class="btn btn-secondary" type="button" (click)="goBack()">
+      Cancel
+    </button>
+    <p>{{formGroup.value | json}}</p>
+  </form>
+</ng-template>

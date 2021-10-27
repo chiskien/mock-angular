@@ -3,9 +3,9 @@ import {ProductService} from "../services/product.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Product} from "../models/product";
 import {Location} from "@angular/common";
-import {map, switchMap} from "rxjs/operators";
+import {catchError, map, switchMap} from "rxjs/operators";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
+import {of, Subscription} from "rxjs";
 import {OpenModalService} from "../services/open-modal.service";
 
 @Component({
@@ -17,6 +17,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   public _product: Product;
   Id: number;
   title: string = "Edit Product";
+  available: boolean = true;
   param: Subscription;
   message: string = '';
   regionNameOptions: string[] = ["Greater Manchester", "Merseyside", "South Yorkshire",
@@ -35,12 +36,9 @@ export class EditPageComponent implements OnInit, OnDestroy {
     this.getProduct();
   }
 
-  openPopUp(id: number, title: string, text: string, action: string) {
-    this.openModalService.openPopUp(id, title, text, action)
-  }
-
   openPopUpwithObject(form: FormGroup, title: string, text: string, action: string) {
     this.openModalService.openPopUpwithForm(form, this._product, title, text, action);
+
   }
 
   createForm(_product: Product): void {
@@ -81,7 +79,12 @@ export class EditPageComponent implements OnInit, OnDestroy {
       switchMap((param: ParamMap) => {
         this.Id = +param.get("id");
         return this.productService.getProductbyId(this.Id);
-      }), map((product: Product) => this._product = product)
+      }), map((product: Product) => this._product = product),
+      catchError(err => {
+        this.title = `Not found product with id: ${this.Id}`
+        this.available = false;
+        return of(null)
+      })
     ).subscribe((product: Product) => {
       this.createForm(product);
       this.onChange(product?.RegionName);
@@ -134,14 +137,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
         break;
     }
 
-  }
-
-  save(product: Product): void {
-    this._product = product;
-    this.productService.updateProduct(product).subscribe(
-      () => this.location.back(),
-      () => console.error("Update fail")
-    )
   }
 
   reset() {
