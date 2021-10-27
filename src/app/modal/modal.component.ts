@@ -4,6 +4,7 @@ import {ProductService} from "../services/product.service";
 import {Router} from "@angular/router";
 import {Product} from "../models/product";
 import {FormGroup} from "@angular/forms";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-modal',
@@ -17,11 +18,13 @@ export class ModalComponent implements OnInit {
   action: string;
   product: Product;
   form: FormGroup;
+
   @Output() rickRoll = new EventEmitter();
 
   constructor(public modalRef: MdbModalRef<ModalComponent>,
               private modalService: MdbModalService,
               private productService: ProductService,
+              private location: Location,
               private route: Router,
   ) {
   }
@@ -36,6 +39,9 @@ export class ModalComponent implements OnInit {
 
   onClick() {
     switch (this.action) {
+      case "create":
+        this.productService.createProduct().subscribe();
+        break;
       case "delete":
         this.productService.deleteProduct(this.id).subscribe(() => {
           this.route.navigate(['/home']).then(() => {
@@ -44,17 +50,20 @@ export class ModalComponent implements OnInit {
         })
         break;
       case "reset":
-        
+        this.rickRoll.emit();
         break;
       case "update":
         this.product = this.form.value;
         this.productService.updateProduct(this.product).subscribe(() => {
+          this.location.back();
           console.table(this.product);
+          this.modalRef.close();
         }, () => {
           console.error("Update fail")
         })
         break;
       case "cancel":
+        this.modalRef.close();
         break;
     }
 
