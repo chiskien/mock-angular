@@ -55,6 +55,10 @@ export class ModalComponent implements OnInit {
         })
         break;
       case "reset":
+        this.modalRef.close();
+        this.modalRef.onClose.subscribe((form) => {
+          form.reset();
+        });
         this.rickRoll.emit();
         break;
       case "update":

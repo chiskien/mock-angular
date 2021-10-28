@@ -38,8 +38,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   openPopUpwithObject(form: FormGroup, title: string, text: string, action: string) {
     this.openModalService.openPopUpwithForm(form, this._product, title, text, action);
-
-
   }
 
   createForm(_product: Product): void {

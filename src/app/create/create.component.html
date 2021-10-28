@@ -1,7 +1,7 @@
 <div class="container">
   <div class="action justify-content-between">
     <h2>{{title}}</h2>
-    <button class="btn btn-secondary" (click)="backTotheHomePage()">
+    <button class="btn btn-dark" (click)="backTotheHomePage()">
       Go back
     </button>
   </div>
@@ -27,7 +27,7 @@
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput type="text"
-                 readonly
+                 [readonly]="true"
                  id="area" class="form-control"
                  formControlName="Area"/>
           <label mdbLabel class="form-label" for="area">Area</label>
@@ -36,7 +36,7 @@
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput type="text"
-                 readonly
+                 [readonly]="true"
                  id="areaCode" class="form-control"
                  formControlName="AreaCode"/>
           <label mdbLabel class="form-label" for="areaCode">AreaCode</label>
@@ -44,78 +44,188 @@
       </div>
       <div class="form-ck">
         <mdb-form-control>
-          <input mdbInput id="averagePrice" class="form-control"
+          <input mdbInput
+                 mdbValidate
+                 id="averagePrice" class="form-control"
                  formControlName="AveragePrice"/>
           <label mdbLabel class="form-label" for="averagePrice">AveragePrice</label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" AveragePrice?.invalid && AveragePrice.errors.min
+              (AveragePrice?.dirty || AveragePrice?.touched)">
+              Average Price must greater than 0 and required
+            </mdb-error>
+            <mdb-success
+              *ngIf="AveragePrice?.valid &&
+               (AveragePrice?.dirty || AveragePrice?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="salesVolume" class="form-control"
                  formControlName="SalesVolume"/>
           <label mdbLabel class="form-label" for="salesVolume">Sale Volume</label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" SalesVolume?.invalid &&
+              (SalesVolume?.dirty || SalesVolume?.touched)">
+              Sales Volume is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="SalesVolume?.valid &&
+               (SalesVolume?.dirty || SalesVolume?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="index" class="form-control"
                  formControlName="Index"/>
           <label mdbLabel class="form-label" for="index">Index</label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" Index?.invalid &&
+              (Index?.dirty || Index?.touched)">
+              Index is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="Index?.valid &&
+               (Index?.dirty || Index?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="detachedPrice" class="form-control"
                  formControlName="DetachedPrice"/>
           <label mdbLabel class="form-label" for="detachedPrice">DetachedPrice</label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" DetachedPrice?.invalid &&
+              (DetachedPrice?.dirty || DetachedPrice?.touched)">
+              Detached Price is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="DetachedPrice?.valid &&
+               (DetachedPrice?.dirty || DetachedPrice?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="detachedIndex" class="form-control"
                  formControlName="DetachedIndex"/>
           <label mdbLabel class="form-label" for="detachedIndex">DetachedIndex</label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" DetachedIndex?.invalid &&
+              (DetachedIndex?.dirty || DetachedIndex?.touched)">
+              Detached Index is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="DetachedIndex?.valid &&
+               (DetachedIndex?.dirty || DetachedIndex?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="semiDetachedPrice" class="form-control"
                  formControlName="SemiDetachedPrice"/>
           <label mdbLabel class="form-label" for="semiDetachedPrice">SemiDetached Price: </label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" SemiDetachedPrice?.invalid &&
+              (SemiDetachedPrice?.dirty || SemiDetachedPrice?.touched)">
+              Semidetached Price is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="SemiDetachedPrice?.valid &&
+               (SemiDetachedPrice?.dirty || SemiDetachedPrice?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="semiDetachedIndex" class="form-control"
                  formControlName="SemiDetachedIndex"/>
           <label mdbLabel class="form-label" for="semiDetachedIndex">SemiDetached Index: </label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" SemiDetachedIndex?.invalid &&
+              (SemiDetachedIndex?.dirty || SemiDetachedIndex?.touched)">
+              Semidetached Index is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="SemiDetachedIndex?.valid &&
+               (SemiDetachedIndex?.dirty || SemiDetachedIndex?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="flatPrice" class="form-control"
                  formControlName="FlatPrice"/>
           <label mdbLabel class="form-label" for="flatPrice">Flat Price: </label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" FlatPrice?.invalid &&
+              (FlatPrice?.dirty || FlatPrice?.touched)">
+              Flat Price is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="FlatPrice?.valid &&
+               (FlatPrice?.dirty || FlatPrice?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="flatIndex" class="form-control"
                  formControlName="FlatIndex"/>
           <label mdbLabel class="form-label" for="flatIndex">Flat Index: </label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" FlatIndex?.invalid &&
+              (FlatIndex?.dirty || FlatIndex?.touched)">
+              FlatIndex is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="FlatIndex?.valid &&
+               (FlatIndex?.dirty || FlatIndex?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="terracedPrice" class="form-control"
                  formControlName="TerracedPrice"/>
           <label mdbLabel class="form-label" for="terracedPrice">Terraced Price: </label>
@@ -124,26 +234,38 @@
       <div class="form-ck">
         <mdb-form-control>
           <input mdbInput
+                 mdbValidate
                  id="terracedIndex" class="form-control"
                  formControlName="TerracedIndex"/>
           <label mdbLabel class="form-label" for="terracedIndex">Terraced Index: </label>
+          <ng-container>
+            <mdb-error
+              *ngIf=" TerracedIndex?.invalid &&
+              (TerracedIndex?.dirty || TerracedIndex?.touched)">
+              TerracedIndex is required
+            </mdb-error>
+            <mdb-success
+              *ngIf="TerracedIndex?.valid &&
+               (TerracedIndex?.dirty || TerracedIndex?.touched)">
+            </mdb-success>
+          </ng-container>
         </mdb-form-control>
       </div>
       <div class="action-btn">
+        <button type="button" class="btn btn-dark"
+                (click)="openPopUpwithObject(formGroup,'Cancel',
+              'Are you sure to cancel ?', 'cancel')">
+          Cancel
+        </button>
         <button class="btn btn-secondary" type="submit"
                 (click)="openPopUpwithObject(formGroup,'Create Product',
           'Create a new product ','create')">Save
         </button>
-        <button type="button" class="btn btn-danger"
+        <button type="button" class="btn btn-dark"
                 (click)="openPopUpwithObject(formGroup,
           'Reset Form','Are you sure to reset all ?',
           'reset')">
           Reset
-        </button>
-        <button type="button" class="btn-dark btn"
-                (click)="openPopUpwithObject(formGroup,'Cancel',
-              'Are you sure to cancel ?', 'cancel')">
-          Cancel
         </button>
       </div>
     </form>
