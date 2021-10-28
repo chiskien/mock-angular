@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {ProductService} from "../services/product.service";
-import {Router} from "@angular/router";
 import {Product} from "../models/product";
 import {FormGroup} from "@angular/forms";
 import {Location} from "@angular/common";
@@ -16,7 +15,6 @@ export class ModalComponent implements OnInit {
   title: string;
   text: string;
   action: string;
-  currentPage: number;
   itemPerPage: number;
   product: Product;
   form: FormGroup;
@@ -27,7 +25,6 @@ export class ModalComponent implements OnInit {
               private modalService: MdbModalService,
               private productService: ProductService,
               private location: Location,
-              private route: Router,
   ) {
   }
 
