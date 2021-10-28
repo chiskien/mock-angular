@@ -77,10 +77,5 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   sort() {
-    const table = document.querySelector("table");
-    let rows = table.rows;
-    for (let i = 1; i < rows.length - 1; i++) {
-      console.log(i);
-    }
   }
 }

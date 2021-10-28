@@ -39,6 +39,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   openPopUpwithObject(form: FormGroup, title: string, text: string, action: string) {
     this.openModalService.openPopUpwithForm(form, this._product, title, text, action);
 
+
   }
 
   createForm(_product: Product): void {
@@ -93,6 +94,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
   }
 
   onChange(regionName) {
+    console.log(regionName);
     switch (regionName) {
       case "Greater Manchester":
         this.formGroup.patchValue({
@@ -117,9 +119,9 @@ export class EditPageComponent implements OnInit, OnDestroy {
         break;
       case "Tyne and Wear":
         this.formGroup.patchValue({
-          regionName: regionName,
-          area: "North",
-          areaCode: "E11000007"
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000007"
         });
         break;
       case "West Midlands":
@@ -136,6 +138,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
           AreaCode: "E11000006"
         });
         break;
+      default:
+        console.log(regionName);
     }
   }
 

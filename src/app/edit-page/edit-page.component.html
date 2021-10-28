@@ -26,9 +26,10 @@
       <div class="form-ck">
         <label for="RegionName" mdbLabel>Region Name: </label>
         <select name="RegionName" formControlName="RegionName"
+                (change)="onChange($event.target['value'])"
                 class="select-input"
                 id="RegionName">
-          <option *ngFor="let option of regionNameOptions" [ngValue]="option">
+          <option *ngFor="let option of regionNameOptions" [value]="option">
             {{option}}
           </option>
         </select>
