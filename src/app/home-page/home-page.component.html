@@ -8,7 +8,9 @@
   <thead>
   <tr class="row-header bg-secondary">
     <th *ngFor="let col of columns" class="head-table">
-      {{col}} <span><i class=" fas fa-arrow-up"></i></span>
+      {{col}}
+      <span (click)="sort()" class="link-light">
+        <i class=" fas fa-arrow-up"></i></span>
     </th>
     <th>Actions</th>
   </tr>

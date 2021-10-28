@@ -33,7 +33,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     return this.productService.getProduct(this.currentPage, this.itemsPerPage)
       .subscribe((response) => {
         this.products$ = response
-        console.log(this.currentPage, this.itemsPerPage)
       })
   }
 
@@ -74,6 +73,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
         (response) => this.products$ = response
       );
       console.log(this.currentPage, this.itemsPerPage);
+    }
+  }
+
+  sort() {
+    const table = document.querySelector("table");
+    let rows = table.rows;
+    for (let i = 1; i < rows.length - 1; i++) {
+      console.log(i);
     }
   }
 }
