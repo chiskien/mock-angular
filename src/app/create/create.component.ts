@@ -29,8 +29,8 @@ export class CreateComponent implements OnInit {
       RegionName: [Validators.required],
       Area: ["", Validators.required],
       AreaCode: ["", Validators.required],
-      AveragePrice: ["", [Validators.required]],
-      Index: ["", [Validators.required]],
+      AveragePrice: [0, [Validators.required]],
+      Index: [0, [Validators.required]],
       IndexSA: [""],
       "1m%Change": [""],
       "12m%Change": [""],
@@ -57,6 +57,56 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  onChange(regionName) {
+    console.log(regionName);
+    switch (regionName) {
+      case "Greater Manchester":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "Northwest",
+          AreaCode: "E11000001"
+        });
+        break;
+      case "Merseyside":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "Northwest",
+          AreaCode: "E11000002"
+        });
+        break;
+      case "South Yorkshire":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000003"
+        });
+        break;
+      case "Tyne and Wear":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000007"
+        });
+        break;
+      case "West Midlands":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "Midlands",
+          AreaCode: "E11000005"
+        });
+        break;
+      case "West Yorkshire":
+        this.formGroup.patchValue({
+          RegionName: regionName,
+          Area: "North",
+          AreaCode: "E11000006"
+        });
+        break;
+      default:
+        console.log(regionName);
+    }
   }
 
   openPopUpwithObject(formGroup: FormGroup,

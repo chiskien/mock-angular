@@ -17,8 +17,9 @@
       <div class="form-ck">
         <label for="RegionName">Region Name: </label>
         <select name="RegionName" formControlName="RegionName"
+                (change)="onChange($event.target['value'])"
                 id="RegionName">
-          <option *ngFor="let option of regionNameOptions" [ngValue]="option">
+          <option *ngFor="let option of regionNameOptions" [value]="option">
             {{option}}
           </option>
         </select>
@@ -43,8 +44,7 @@
       </div>
       <div class="form-ck">
         <mdb-form-control>
-          <input mdbInput
-                 id="averagePrice" class="form-control"
+          <input mdbInput id="averagePrice" class="form-control"
                  formControlName="AveragePrice"/>
           <label mdbLabel class="form-label" for="averagePrice">AveragePrice</label>
         </mdb-form-control>
@@ -146,7 +146,6 @@
           Cancel
         </button>
       </div>
-      <p>{{formGroup.value | json}}</p>
     </form>
   </div>
 </div>
