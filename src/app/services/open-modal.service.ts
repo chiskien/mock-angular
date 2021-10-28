@@ -13,17 +13,6 @@ export class OpenModalService {
   constructor(private modalService: MdbModalService) {
   }
 
-  openPopUp(id: number, title: string, text: string, action: string) {
-    this.modalRef = this.modalService.open(ModalComponent, {
-      data: {
-        id: id,
-        title: title,
-        text: text,
-        action: action
-      },
-    });
-  }
-
   openPopUpwithForm(form: FormGroup, product: Product,
                     title: string, text: string, action: string) {
     this.modalRef = this.modalService.open(ModalComponent, {

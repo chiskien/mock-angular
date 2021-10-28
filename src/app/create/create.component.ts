@@ -184,4 +184,9 @@ export class CreateComponent implements OnInit {
   }
 
 
+  reset() {
+    if (confirm("Are you sure to reset all the fields ?")) {
+      this.formGroup.reset();
+    }
+  }
 }

@@ -30,8 +30,7 @@
         <a [routerLink]="['/edit', product.id]" class="link"><i class="fas fa-edit"></i></a>
         <a [routerLink]="['/detail', product.id]" class="link"> <i class="fas fa-eye"></i></a>
         <button type="button" class="btn btn-ck btn-secondary"
-                (click)="openPopUp(product.id,'Delete Confirmation',
-                          'Are you sure to delete this?','delete')">
+                (click)="openPrompt(product)">
           <i class="fas fa-trash-alt"></i>
         </button>
       </div>

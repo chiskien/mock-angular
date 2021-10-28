@@ -10,7 +10,7 @@ export class PaginationComponent implements OnInit {
   @Output() selectItemPerPage = new EventEmitter<number>();
   @Output() nextPage = new EventEmitter();
   @Output() prevPage = new EventEmitter();
-  options: number[] = [10, 20, 50, 100];
+  options: number[] = [10, 20, 50, 100, 200];
   @Input() rowPerPage: number = 10;
   @Input() currentPage: number = 10;
 

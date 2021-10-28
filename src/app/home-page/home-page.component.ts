@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {OpenModalService} from "../services/open-modal.service";
 
 @Component({
@@ -21,7 +21,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService,
               private router: Router,
-              private modal: OpenModalService) {
+              private activatedRoute: ActivatedRoute,
+              private opanModalService: OpenModalService) {
   }
 
   ngOnInit(): void {
@@ -50,32 +51,39 @@ export class HomePageComponent implements OnInit, OnDestroy {
     });
   }
 
-  openPopUp(id: number, title: string, text: string, action: string) {
-    this.modal.openPopUp(id, title, text, action);
-  }
-
   ngOnDestroy() {
     this.getProducts(this.itemsPerPage).unsubscribe();
   }
 
   nextPage() {
-    this.currentPage += 1;
+    this.currentPage = this.currentPage + 1;
     this.productService.getProduct(this.currentPage, this.itemsPerPage).subscribe(
-      (response) => this.products$ = response
+      (response) => {
+        this.products$ = response;
+        console.log(this.currentPage);
+      }
     );
-    console.log(this.currentPage, this.itemsPerPage)
   }
 
   prevPage() {
     if (this.currentPage) {
-      this.currentPage -= 1;
-      this.productService.getProduct(this.currentPage, this.itemsPerPage).subscribe(
-        (response) => this.products$ = response
-      );
-      console.log(this.currentPage, this.itemsPerPage);
+      this.currentPage = this.currentPage - 1;
+      this.productService.getProduct(this.currentPage, this.itemsPerPage)
+        .subscribe(
+          (response) => {
+            this.products$ = response;
+            console.log(this.currentPage);
+          }
+        );
     }
   }
 
   sort() {
+  }
+
+  openPrompt(product: Product) {
+    if (confirm("Are you sure to delete this? ")) {
+      this.deleteProduct(product);
+    }
   }
 }

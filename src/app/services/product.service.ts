@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProduct(_page: number = 1, _limit: number = 10): Observable<Product[]> {
+  getProduct(_page: number, _limit: number): Observable<Product[]> {
     return this.http.get<Product[]>(this.url, {
       params: {
         _page: _page,

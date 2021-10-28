@@ -63,12 +63,12 @@ export class DetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  openPopUp(id: number) {
-    this.modalRef = this.modalService.open(ModalComponent, {
-      data: {
-        id: id
-      },
-    });
+  openPopUp(product: Product) {
+    if (confirm("Are you sure delete this? ")) {
+      this.productService.deleteProduct(product.id).subscribe(() => {
+        this.location.back();
+      })
+    }
   }
 
   goBack(): void {

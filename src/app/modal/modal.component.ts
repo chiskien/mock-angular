@@ -16,6 +16,8 @@ export class ModalComponent implements OnInit {
   title: string;
   text: string;
   action: string;
+  currentPage: number;
+  itemPerPage: number;
   product: Product;
   form: FormGroup;
 
@@ -46,20 +48,6 @@ export class ModalComponent implements OnInit {
           console.table(this.product);
           this.modalRef.close();
         });
-        break;
-      case "delete":
-        this.productService.deleteProduct(this.id).subscribe(() => {
-          this.route.navigate(['/home']).then(() => {
-            window.location.reload();
-          })
-        })
-        break;
-      case "reset":
-        this.modalRef.close();
-        this.modalRef.onClose.subscribe((form) => {
-          form.reset();
-        });
-        this.rickRoll.emit();
         break;
       case "update":
         this.product = this.form.value;

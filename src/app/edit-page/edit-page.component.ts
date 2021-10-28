@@ -142,8 +142,9 @@ export class EditPageComponent implements OnInit, OnDestroy {
   }
 
   reset() {
-    console.log("reset this madafaka");
-    this.formGroup.reset();
+    if (confirm("Are you sure to delete all the field? ")) {
+      this.formGroup.reset();
+    }
   }
 
   goBack(): void {
