@@ -1,3 +1,13 @@
 .btn {
   margin: 10px
 }
+
+.datatable-select-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.datatable-select-text, .datatable-pagination-button, .datatable-select-wrapper {
+  margin: 10px;
+}

@@ -27,7 +27,8 @@
     </td>
     <td>
       <div class="action-list">
-        <a [routerLink]="['/edit', product.id]" class="link"><i class="fas fa-edit"></i></a>
+        <a [routerLink]="['/edit', product.id]" class="link"><i
+          class="fas fa-edit"></i></a>
         <a [routerLink]="['/detail', product.id]" class="link"> <i class="fas fa-eye"></i></a>
         <button type="button" class="btn btn-ck btn-secondary"
                 (click)="openPrompt(product)">
@@ -38,11 +39,11 @@
   </tr>
   </tbody>
 </table>
-<app-pagination (selectItemPerPage)="getProducts($event)"
-                [rowPerPage]="itemsPerPage"
-                [currentPage]="currentPage"
-                (nextPage)="nextPage()"
-                (prevPage)="prevPage()"
-></app-pagination>
-
-
+<div class=" d-flex justify-content-end">
+  <app-pagination (selectItemPerPage)="getProducts($event)"
+                  [rowPerPage]="itemsPerPage"
+                  [currentPage]="currentPage"
+                  (nextPage)="nextPage()"
+                  (prevPage)="prevPage()"
+  ></app-pagination>
+</div>
