@@ -1,5 +1,3 @@
-@import "../../assets/scss/free/variables";
-
 @mixin action-header {
   display: flex;
   justify-content: space-between;
@@ -8,8 +6,8 @@
 }
 
 .row-header {
-  color: #fff;
   font-size: 0.94em;
+  color: #fff;
   text-align: center;
 }
 
@@ -19,7 +17,7 @@
 
 .link {
   font-weight: 600;
-  color: $deep-purple-accent-200;
+  color: #7c4dff;
   font-size: 1.1em;
   margin-right: 10px;
 }
